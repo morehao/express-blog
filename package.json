@@ -13,6 +13,7 @@
   "author": "morehao",
   "license": "MIT",
   "devDependencies": {
+    "cz-conventional-changelog": "^2.1.0",
     "nodemon": "^1.17.3"
   },
   "dependencies": {
@@ -23,5 +24,10 @@
     "husky": "^0.14.3",
     "mongoose": "^5.0.12",
     "validate-commit-msg": "^2.14.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
