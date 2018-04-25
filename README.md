@@ -1,5 +1,8 @@
 # express-restfulApi
-在express框架下实现restfulAPI，以及自己的一些编程学习
-1、restfulAPI的实现
-2、格式化commit message
-3、抽离middlewares
+在express框架下的学习与摸索<br>
+1、restfulAPI的实现<br>
+2、实现MVC模式<br>
+
+
+参考资料：<br>
+https://www.codementor.io/olatundegaruba/nodejs-restful-apis-in-10-minutes-q0sgsfhbd<br>
