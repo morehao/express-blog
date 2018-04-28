@@ -1,9 +1,9 @@
 'use strict'
 const mongoose = require('mongoose')
-const Task = mongoose.model('Tasks')
+const mdbs = require('../models')
 
 exports.list_all_tasks = function(req, res) {
-  Task.find({}, function(err, task) {
+  mdbs.Task.find({}, function(err, task) {
     if (err)
       res.send(err)
       res.json(task)
@@ -12,7 +12,7 @@ exports.list_all_tasks = function(req, res) {
 
 exports.create_a_task = function(req, res) {
   console.log('create_task')
-  var new_task = new Task(req.body)
+  var new_task = new mdbs.Task(req.body)
   new_task.save(function(err, task) {
     if (err)
       res.send(err)
@@ -22,7 +22,7 @@ exports.create_a_task = function(req, res) {
 
 
 exports.read_a_task = function(req, res) {
-  Task.findById(req.params.taskId, function(err, task) {
+  mdbs.Task.findById(req.params.taskId, function(err, task) {
     if (err)
       res.send(err)
       res.json(task)
@@ -31,7 +31,7 @@ exports.read_a_task = function(req, res) {
 
 
 exports.update_a_task = function(req, res) {
-  Task.findOneAndUpdate({_id: req.params.taskId}, req.body, {new: true}, function(err, task) {
+  mdbs.Task.findOneAndUpdate({_id: req.params.taskId}, req.body, {new: true}, function(err, task) {
     if (err)
       res.send(err)
       res.json(task)
@@ -40,7 +40,7 @@ exports.update_a_task = function(req, res) {
 
 
 exports.delete_a_task = function(req, res) {
-  Task.remove({
+  mdbs.Task.remove({
     _id: req.params.taskId
   }, function(err, task) {
     if (err)

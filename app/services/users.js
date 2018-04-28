@@ -1,6 +1,5 @@
 'use strict'
 const mdbs = require('../models')
-const User = require('../models/users')
 
 class UserService {
   async create (params) {

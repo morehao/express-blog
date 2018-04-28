@@ -1,7 +1,8 @@
 'use strict'
-const serverApp = require('../../server')
-class BaseController {
-  constructor () {
+
+class returnController {
+  constructor (req, res) {
+
   }
   returnOk (req,res,data) {
     console.log('data:',data)
@@ -11,5 +12,4 @@ class BaseController {
     })
   }
 }
-module.exports = BaseController
-
+module.exports = new returnController()
