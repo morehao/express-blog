@@ -11,6 +11,10 @@ class UserService {
     const result = await mdbs.User.find(params)
     return result
   }
+  async show (params) {
+    const result = await mdbs.User.findOne({_id: params._id})
+    return result
+  }
 }
 const userService = new UserService()
 module.exports = userService

@@ -1,6 +1,7 @@
 'use strict'
 const lodash = require('lodash')
 
+const errorCode = require('../config/error-code')
 module.exports = (req,res,next) => {
   const extendAttr = {
     sendOk: (option) => {
@@ -14,8 +15,8 @@ module.exports = (req,res,next) => {
     sendErr: (option) => {
       const rst = {
         status: 200,
-        errorCode: option.errorCode,
-        msg: option.errorMsg
+        errorCode: errorCode[option].errorCode,
+        msg: errorCode[option].errorMsg
       }
       return res.json(lodash.extend(rst))
     }

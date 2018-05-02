@@ -1,15 +1,18 @@
 'use strict';
-const errorHandler = require("../middlewares/error.js")
 const successHandler = require('../middlewares/success-handler')
+const errorHandler = require('../middlewares/error-handler')
+
 module.exports = function(app) {
   const Controllers = require('../controllers')
-  
-  app.use(successHandler)
-
+  const middlewaresArr = [successHandler]
+  app.use(middlewaresArr)
   app.route('/users')
     .get(Controllers.users.list)
     .post(Controllers.users.create)
-
+    .put(Controllers.users.error)
+    .delete(Controllers.users.show)
+  app.route('/user')
+    .get(Controllers.users.show)
   // const middlewaresArr = [errorHandler.nFound, errorHandler.rejectd]
   // app.use(middlewaresArr)
   // tasks Routes
@@ -24,4 +27,7 @@ module.exports = function(app) {
     .get(Controllers.tasks.read_a_task)
     .put(Controllers.tasks.update_a_task)
     .delete(Controllers.tasks.delete_a_task);
+
+  //错误处理中间件
+  app.use(errorHandler)
 }
