@@ -1,13 +1,12 @@
 {
   "name": "todolistapi",
   "version": "1.0.0",
-  "description": "RESTful todoListApi",
+  "description": "express-frame",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js",
-    "commitmsg": "validate-commit-msg",
-    "commit": "git-cz",
+    "dev": "nodemon server.js",
+    "start": "node server.js",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
   "author": "morehao",
@@ -24,8 +23,8 @@
     "express": "^4.16.3",
     "husky": "^0.14.3",
     "lodash": "^4.17.10",
-    "mongoose": "^5.0.12",
-    "validate-commit-msg": "^2.14.0"
+    "moment": "^2.22.1",
+    "mongoose": "^5.0.12"
   },
   "config": {
     "commitizen": {

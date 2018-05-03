@@ -1,27 +1,31 @@
 'use strict'
 const mongoose = require('mongoose')
+const moment = require('moment')
 const Schema = mongoose.Schema
 const UserSchema = new Schema({
-  name: {
-    type: String,
-    required: 'name is required'
-  },
-  age: {
-    type: Number,
-    min: 18,
-    max: 15
-  },
-  sex: {
-    type: String,
-    enum: ['male','female','unknow']
-  },
-  created_at: {
-    type: Date, 
-    default: Date.now
-  },
-  updated_at: {
-    type: Date, 
-    default: Date.now
-  }
+  name: { type: String, required: 'name is required' },
+  nickName: { type: String },
+  password: { type: String },
+  age: { type: Number, min: 18, max: 95},
+  sex: { type: String, enum: ['male','female','unknow'] },
+  company: String, // 大学或者公司
+  website: String, // 个人网站
+  intruction: { type: String, default: '这个人很懒，什么都有没留下、、、' },
+  logo: { type: String, default: '/upload/images/defaultlogo.png' },
+  lastLogin: Date,
+  created_at: { type: Date,  default: Date.now },
+  updated_at: { type: Date,  default: Date.now }
+})
+UserSchema.set('toJSON', { getters: true, virtuals: true })
+UserSchema.set('toObject', { getters: true, virtuals: true })
+
+UserSchema.path('lastLogin').get(function (v) {
+    return moment(v).format("YYYY-MM-DD HH:mm:ss")
+})
+UserSchema.path('created_at').get(function (v) {
+  return moment(v).format("YYYY-MM-DD HH:mm:ss")
+})
+UserSchema.path('updated_at').get(function (v) {
+  return moment(v).format("YYYY-MM-DD HH:mm:ss")
 })
 module.exports = mongoose.model('Users', UserSchema)
