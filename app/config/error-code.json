@@ -1,6 +1,0 @@
-{
-  "USER_NOT_EXITS": {
-    "errorCode": 10000,
-    "errorMsg": "该用户不存在"
-  }
-}

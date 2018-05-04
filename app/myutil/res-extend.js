@@ -25,7 +25,7 @@ module.exports = (req,res,next) => {
       const rst = {
         status: 200,
         errorCode: errorCode[option].errorCode,
-        msg: errorCode[option].errorMsg
+        errorMsg: errorCode[option].errorMsg
       }
       return res.json(lodash.extend(rst))
     }

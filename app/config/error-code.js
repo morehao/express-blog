@@ -8,7 +8,7 @@ module.exports = {
     errorCode: 10001,
     errorMsg: '该用户不存在'
   },
-  USER_FIND_FAILED: {
+  USER_QUERY_FAILED: {
     errorCode: 10002,
     errorMsg: '用户查询失败'
   },
@@ -19,5 +19,9 @@ module.exports = {
   USER_DELETE_FAILED: {
     errorCode: 10004,
     errorMsg: '用户删除失败'
+  },
+  LIST_QUERY_FAILDE: {
+    errorCode: 20000,
+    errorMsg: '列表查询失败'
   }
 }

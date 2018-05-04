@@ -1,7 +1,7 @@
 'use strict'
 const mdbs = require('../models')
 const myutil = require('../myutil')
-const settings = require('../config/settings')
+const configs = require('../config')
 class UserService {
   async create (params) {
     try {
@@ -12,14 +12,15 @@ class UserService {
         }
         return result
       } else {
-        params.password = myutil.crypto.encrypted(params.password, settings.saltKey)
-        const createRes = new mdbs.User(params)
-        const result = await createRes.save()
+        params.password = myutil.crypto.encrypted(params.password, configs.settings.saltKey)
+        // const createRes = new mdbs.User(params)
+        // const result = await createRes.save()
+        const result = await mdbs.User.create(params)
         return result
       }
     } catch (error) {
       const result = {
-        msg: 'USER_FIND_FAILED'
+        msg: 'USER_QUEY_FAILED'
       }
       return result
     }  
@@ -72,7 +73,7 @@ class UserService {
       return findRes
     } catch (error) {
       const result = {
-        msg: 'USER_FIND_FAILED'
+        msg: 'USER_QUERY_FAILED'
       }
       return result
     }

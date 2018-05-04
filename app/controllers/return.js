@@ -4,7 +4,7 @@ class returnController {
   constructor (req, res) {
 
   }
-  returnOk (req,res,data) {
+  returnOk (req, res, data) {
     console.log('data:',data)
     res.json({
       errorCode: 0,
