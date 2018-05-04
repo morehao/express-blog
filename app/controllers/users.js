@@ -37,7 +37,10 @@ class UsersController extends BaseController {
       pagesize: offset.pagesize,
       sortRule: offset.sortRule
     }
-    const result = await Services.db.list(queryObj)
+    const userList = await Services.db.list(queryObj)
+    const result = userList.map(data => {
+      return myutil.format.user(data.toObject())
+    })
     res.sendOk(result)
     
     // returns.returnOk(req,res,result)

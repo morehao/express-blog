@@ -75,7 +75,8 @@ class UserService {
   async detail (params) {
     try {
       const findRes = await mdbs.User.findById(params)
-      return findRes
+      const result =  myutil.format.user(findRes.toObject())
+      return result
     } catch (error) {
       const result = {
         errMsg: 'USER_QUERY_FAILED'

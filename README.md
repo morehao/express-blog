@@ -7,6 +7,7 @@
 5、用户管理的简单增删改查接口<br>
 6、用户列表查询的封装处理<br>
 7、npm run build 初始化创建管理员用户<br>
+8、读出数据的二次处理（填充）<br>
 
 参考资料：<br>
 https://www.codementor.io/olatundegaruba/nodejs-restful-apis-in-10-minutes-q0sgsfhbd<br>
