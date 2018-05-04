@@ -45,16 +45,6 @@ UserSchema.statics = {
   findAge: async function (age) {
     const findRes = await this.find({age: age})
     return findRes
-  },
-  list: async function (query,currentPage,pagesize,sortRule) {
-    return this.find(query)
-              .skip(Number(Number(currentPage -1 )) * Number(pagesize))
-              .limit(pagesize)
-              .sort({created_at: Number(sortRule)})
-  },
-  list2: async function (query,currentPage,pagesize,sortRule) {
-    const result = await this.find(query)
-                              .sort(sortRule)
   }
 }
 

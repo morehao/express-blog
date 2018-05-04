@@ -8,19 +8,17 @@ class UserService {
       const findRes = await mdbs.User.findOne({name: params.name})
       if (findRes) {
         const result = {
-          msg: 'USER_HAS_EXITS'
+          errMsg: 'USER_HAS_EXITS'
         }
         return result
       } else {
         params.password = myutil.crypto.encrypted(params.password, configs.settings.saltKey)
-        // const createRes = new mdbs.User(params)
-        // const result = await createRes.save()
         const result = await mdbs.User.create(params)
         return result
       }
     } catch (error) {
       const result = {
-        msg: 'USER_QUEY_FAILED'
+        errMsg: 'USER_QUEY_FAILED'
       }
       return result
     }  
@@ -30,16 +28,19 @@ class UserService {
       const findRes = await mdbs.User.findById(params)
       if (!findRes) {
         const result = {
-          msg: 'USER_NOT_EXITS'
+          errMsg: 'USER_NOT_EXITS'
         }
         return result
       } else {
-        const result = await mdbs.User.remove({_id: params})
+        await mdbs.User.remove({_id: params})
+        const result = {
+          successMsg: 'USER_DELETE_SUCCESS'
+        }
         return result
       }
     } catch (error) {
       const result = {
-        msg: 'USER_DELETE_FAILED'
+        errMsg: 'USER_DELETE_FAILED'
       }
       return result
     }
@@ -49,16 +50,20 @@ class UserService {
       const findRes = await mdbs.User.findById(params._id)
       if (!findRes) {
         const result = {
-          msg: 'USER_NOT_EXITS'
+          errerrMsg: 'USER_NOT_EXITS'
         }
         return result
       } else {
-        const result = await mdbs.User.findOneAndUpdate({_id: params._id}, {$set: params})
+        await mdbs.User.update({_id: params._id}, {$set: params})
+        const result = {
+          successMsg: 'USER_UPDATE_SUCCESS'
+        }
         return result
       }
     } catch (error) {
+      console.log('err:',error)
       const result = {
-        msg: 'USER_UPDATE_FAILED'
+        errMsg: 'USER_UPDATE_FAILED'
       }
       return result
     }
@@ -73,11 +78,11 @@ class UserService {
       return findRes
     } catch (error) {
       const result = {
-        msg: 'USER_QUERY_FAILED'
+        errMsg: 'USER_QUERY_FAILED'
       }
       return result
     }
   }
 }
-const userService = new UserService()
-module.exports = userService
+
+module.exports = new UserService()
