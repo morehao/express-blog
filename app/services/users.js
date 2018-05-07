@@ -61,7 +61,6 @@ class UserService {
         return result
       }
     } catch (error) {
-      console.log('err:',error)
       const result = {
         errMsg: 'USER_UPDATE_FAILED'
       }
@@ -80,6 +79,35 @@ class UserService {
     } catch (error) {
       const result = {
         errMsg: 'USER_QUERY_FAILED'
+      }
+      return result
+    }
+  }
+  async login (params) {
+    try {
+      const findRes = await mdbs.User.findOne({name: params.name})
+                                      .select('-password')
+      if (!findRes) {
+        const result = {
+          errMsg: 'USER_NOT_EXITS'
+        }
+        return result
+      } else {
+        const inputPasswd = myutil.crypto.encrypted(params.password, configs.settings.saltKey)
+        const equal = await myutil.crypto.checkPasswd(inputPasswd, findRes.password)
+        if (!equal) {
+          const result = {
+            errMsg: 'USER_PASSWORD_WRONG'
+          }
+          return result
+        } else {
+          const result = myutil.format.user(findRes.toObject())
+          return result
+        }
+      }
+    } catch (error) {
+      const result = {
+        errMsg: 'USER_LOGIN_FAILED'
       }
       return result
     }

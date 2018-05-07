@@ -20,6 +20,14 @@ module.exports = {
     errorCode: 10004,
     errorMsg: '用户删除失败'
   },
+  USER_PASSWORD_WRONG: {
+    errorCode: 10005,
+    errorMsg: '用户密码错误'
+  },
+  USER_LOGIN_FAILED: {
+    errorCode: 10006,
+    errorMsg: '用户登录失败'
+  },
   LIST_QUERY_FAILDE: {
     errorCode: 20000,
     errorMsg: '列表查询失败'

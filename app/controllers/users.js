@@ -49,6 +49,10 @@ class UsersController extends BaseController {
     const result = await Services.users.detail(req.params._id)
     res.sendOk(result)
   }
+  async login (req,res) {
+    const result = await Services.users.login(req.body)
+    res.sendOk(result)
+  }
   async error (req, res, next) {
     console.log('users-error')
     const error = new Error('USER_NOT_EXITS')

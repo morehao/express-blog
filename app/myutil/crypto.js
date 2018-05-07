@@ -17,5 +17,15 @@ module.exports = {
       oldPsd += decipher.update(password, 'hex', 'utf8')
       oldPsd += decipher.final('utf8')
       return oldPsd
+    },
+    // 密码对比
+    checkPasswd (inputPasswd, userPasswd) {
+      let result
+      if (inputPasswd === userPasswd) {
+        result = true
+      } else {
+        result = false
+      }
+      return true
     }
 }
