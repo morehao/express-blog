@@ -2,13 +2,12 @@
 const jwt = require('jsonwebtoken')
 const {settings} = require('../config')
 
-console.log(settings.expiredTime)
 module.exports = {
   createToken (uuid) {
     const token = jwt.sign(
       {id: uuid},
       settings.jwtSecret,
-      {expiresIn: settings.expiredTime}
+      {expiresIn: 3600 * 24}
     )
     return token
   },
