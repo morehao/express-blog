@@ -6,11 +6,11 @@ module.exports = (req,res,next) => {
   const extendAttr = {
     sendOk: (option) => {
       let rst = {}
-      if (option.errMsg) {
+      if (option.errorMsg) {
         rst = {
           status: 200,
-          errorCode: configs.errorCode[option.errMsg].errorCode,
-          errorMsg: configs.errorCode[option.errMsg].errorMsg
+          errorCode: configs.errorMsg[option.errorMsg].errorCode,
+          errorMsg: configs.errorMsg[option.errorMsg].errorMsg
         }
       } else if (option.successMsg) {
         rst = {
@@ -30,8 +30,8 @@ module.exports = (req,res,next) => {
     sendErr: (option) => {
       const rst = {
         status: 200,
-        errorCode: configs.errorCode[option].errorCode,
-        errorMsg: configs.errorCode[option].errorMsg
+        errorCode: configs.errorMsg[option].errorCode,
+        errorMsg: configs.errorMsg[option].errorMsg
       }
       return res.json(lodash.extend(rst))
     }

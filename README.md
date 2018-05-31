@@ -9,5 +9,6 @@
 7、npm run build 初始化创建管理员用户<br>
 8、读出数据的二次处理（填充）<br>
 9、学习使用vscode调试程序<br>
+10、使用JWT实现token认证<br>
 参考资料：<br>
 https://www.codementor.io/olatundegaruba/nodejs-restful-apis-in-10-minutes-q0sgsfhbd<br>

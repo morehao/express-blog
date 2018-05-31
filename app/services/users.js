@@ -8,7 +8,7 @@ class UserService {
       const findRes = await mdbs.User.findOne({name: params.name})
       if (findRes) {
         const result = {
-          errMsg: 'USER_HAS_EXITS'
+          errorMsg: 'USER_HAS_EXITS'
         }
         return result
       } else {
@@ -18,7 +18,7 @@ class UserService {
       }
     } catch (error) {
       const result = {
-        errMsg: 'USER_QUEY_FAILED'
+        errorMsg: 'USER_QUEY_FAILED'
       }
       return result
     }  
@@ -28,7 +28,7 @@ class UserService {
       const findRes = await mdbs.User.findById(params)
       if (!findRes) {
         const result = {
-          errMsg: 'USER_NOT_EXITS'
+          errorMsg: 'USER_NOT_EXITS'
         }
         return result
       } else {
@@ -40,7 +40,7 @@ class UserService {
       }
     } catch (error) {
       const result = {
-        errMsg: 'USER_DELETE_FAILED'
+        errorMsg: 'USER_DELETE_FAILED'
       }
       return result
     }
@@ -50,7 +50,7 @@ class UserService {
       const findRes = await mdbs.User.findById(params._id)
       if (!findRes) {
         const result = {
-          errerrMsg: 'USER_NOT_EXITS'
+          errorMsg: 'USER_NOT_EXITS'
         }
         return result
       } else {
@@ -62,7 +62,7 @@ class UserService {
       }
     } catch (error) {
       const result = {
-        errMsg: 'USER_UPDATE_FAILED'
+        errorMsg: 'USER_UPDATE_FAILED'
       }
       return result
     }
@@ -78,7 +78,7 @@ class UserService {
       return result
     } catch (error) {
       const result = {
-        errMsg: 'USER_QUERY_FAILED'
+        errorMsg: 'USER_QUERY_FAILED'
       }
       return result
     }
@@ -89,7 +89,7 @@ class UserService {
                                       .select('-password')
       if (!findRes) {
         const result = {
-          errMsg: 'USER_NOT_EXITS'
+          errorMsg: 'USER_NOT_EXITS'
         }
         return result
       } else {
@@ -97,7 +97,7 @@ class UserService {
         const equal = await myutil.crypto.checkPasswd(inputPasswd, findRes.password)
         if (!equal) {
           const result = {
-            errMsg: 'USER_PASSWORD_WRONG'
+            errorMsg: 'USER_PASSWORD_WRONG'
           }
           return result
         } else {
@@ -107,7 +107,7 @@ class UserService {
       }
     } catch (error) {
       const result = {
-        errMsg: 'USER_LOGIN_FAILED'
+        errorMsg: 'USER_LOGIN_FAILED'
       }
       return result
     }

@@ -14,7 +14,7 @@ const configs = require('./app/config')
 const myutil = require('./app/myutil/index.js')
 
 // 连接数据库
-mongoose.Promise = global.Promise // 将mongoose自身的promise替代为ES6promise
+mongoose.Promise = global.Promise // 将mongoose自身的promise替代为ES6的promise
 mongoose.connect(configs.settings.dbConfig.URL)
 
 app.use(bodyParser.urlencoded({ extended: true }))

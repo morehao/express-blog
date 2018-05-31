@@ -3,7 +3,9 @@
 module.exports = {
   // 密码盐
   saltKey: 'express_frame',
-
+  // jwt实现token认证的secret
+  jwtSecret: "express_jwt",
+  expiredTime: 24 * 1000,
   port: process.env.PORT || 3000,
   //mongodb数据库配置
   dbConfig: {

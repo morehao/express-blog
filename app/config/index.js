@@ -1,7 +1,7 @@
 'use strict'
 const configs = {}
 
-configs.errorCode = require('./error-code')
+configs.errorMsg = require('./error-message')
 configs.successMsg = require('./success-message')
 configs.pagesize = require('./pagesize')
 configs.settings = require('./settings')

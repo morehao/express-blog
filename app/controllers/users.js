@@ -27,6 +27,18 @@ class UsersController extends BaseController {
     res.sendOk(result)
   }
   async list (req, res) {
+
+    // const modelObj = {
+    //   user: mdbs.User
+    // }
+    // const result = await modelObj[req.query.modelName].find()
+    // const result = await mdbs.User.find({
+    //   $or: [
+    //     {name: {$regex: 'admin', $options: 'i'}},
+    //     {name: {$regex: 'test001', $options: 'i'}}   
+    //   ]
+    // })
+
     // 翻页参数处理
     const offset = myutil.paramsHandler.offsetFormat(req.query, configs.pagesize.users)
     const queryObj = {
@@ -46,15 +58,16 @@ class UsersController extends BaseController {
     // returns.returnOk(req,res,result)
   }
   async detail (req, res) {
+    // myutil.auth.verifyToken(req.headers.token)
     const result = await Services.users.detail(req.params._id)
     res.sendOk(result)
   }
   async login (req,res) {
     const result = await Services.users.login(req.body)
+    result.token = myutil.auth.createToken(result.id)
     res.sendOk(result)
   }
   async error (req, res, next) {
-    console.log('users-error')
     const error = new Error('USER_NOT_EXITS')
     // // res.sendErr('USER_NOT_EXITS')
     next(error)

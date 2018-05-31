@@ -15,8 +15,8 @@ module.exports = {
   returnError: (errMsg) => {
     const result = {
       status: 200,
-      errorCode: configs.errorCode[errMsg].errorCode,
-      errorMsg: configs.errorCode[errMsg].errorMsg
+      errorCode: configs.errorMsg[errMsg].errorCode,
+      errorMsg: configs.errorMsg[errMsg].errorMsg
     }
     return result
   },
