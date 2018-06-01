@@ -1,10 +1,10 @@
 'use strict'
-const mdbs = require('../models')
+const mdb = require('../models')
 
 class DbService {
   async list (params) {
     try {
-      const result = mdbs[params.model]
+      const result = mdb[params.model]
         .find(params.query)
         .skip(params.skipCount)
         .limit(params.pagesize)
@@ -18,7 +18,6 @@ class DbService {
       return result
     }
   }
-  
 }
 
 module.exports = new DbService()

@@ -6,7 +6,8 @@ const middleware = require('../middlewares')
 
 const middlewaresArr = [successHandler, middleware.verifyToken]
 
-module.exports = function(app) {
+module.exports = function (app) {
+  app.post('/users/test', Controllers.users.test)
   app.post('/users/login', Controllers.users.login)
   app.post('/users', Controllers.users.create)
   app.use(middlewaresArr)
@@ -16,6 +17,6 @@ module.exports = function(app) {
     .get(Controllers.users.detail)
     .put(Controllers.users.update)
     .delete(Controllers.users.destroy)
-  //错误处理中间件
+  // 错误处理中间件
   app.use(errorHandler)
 }

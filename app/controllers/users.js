@@ -1,10 +1,7 @@
 'use strict'
-const moment = require('moment')
-
 const Services = require('../services')
-const mdbs = require('../models')
 const {auth, format, resHandler, paramsHandler} = require('../myutil')
-const configs = require('../config')
+const {pageConfig} = require('../config')
 
 class UsersController {
   async create (req, res) {
@@ -39,18 +36,16 @@ class UsersController {
   async list (req, res) {
     try {
       // 翻页参数处理
-      const offset = paramsHandler.offsetFormat(req.query, configs.pagesize.users)
+      const offset = paramsHandler.offsetFormat(req.query, pageConfig.users)
       const queryObj = {
-        model: 'User',
-        option: 'find',
-        query: {},
+        condition: {},
         skipCount: offset.skipCount,
         pagesize: offset.pagesize,
         sortRule: offset.sortRule
       }
-      const userList = await Services.db.list(queryObj)
+      const userList = await Services.users.list(queryObj)
       const result = userList.map(data => {
-        return format.user(data.toObject())
+        return format.user(data)
       })
       res.sendOk(result)
     } catch (error) {
@@ -64,7 +59,7 @@ class UsersController {
     // const result = await mdbs.User.find({
     //   $or: [
     //     {name: {$regex: 'admin', $options: 'i'}},
-    //     {name: {$regex: 'test001', $options: 'i'}}   
+    //     {name: {$regex: 'test001', $options: 'i'}}
     //   ]
     // })
   }
@@ -76,9 +71,8 @@ class UsersController {
       const errorRes = resHandler.getErrorRes(error)
       res.sendErr(errorRes)
     }
-    
   }
-  async login (req,res) {
+  async login (req, res) {
     try {
       const result = await Services.users.login(req.body)
       result.token = auth.createToken(result.id)
@@ -88,11 +82,9 @@ class UsersController {
       res.sendErr(errorRes)
     }
   }
-  async error (req, res, next) {
-    const error = new Error('USER_NOT_EXITS')
-    // // res.sendErr('USER_NOT_EXITS')
-    next(error)
-    // throw 'USER_NOT_EXITS'
+  async test (req, res) {
+    const result = await Services.users.test(req.body.name)
+    res.sendOk(result)
   }
 }
 module.exports = new UsersController()

@@ -4,7 +4,7 @@ const configs = require('../config')
 module.exports = {
   // 成功提示的返回
   returnSuccess: (successMsg) => {
-    const result =  {
+    const result = {
       status: 200,
       errorCode: 0,
       successMsg: configs.successMsg[successMsg]

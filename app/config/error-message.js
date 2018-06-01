@@ -57,7 +57,12 @@ module.exports = {
   },
   LIST_QUERY_FAILDE: {
     status: 200,
-    errorCode: 20000,
+    errorCode: 200000,
     errorMsg: '列表查询失败'
+  },
+  USERLIST_FIND_FAILDE: {
+    status: 200,
+    errorCode: 200001,
+    errorMsg: '用户列表查询失败'
   }
 }

@@ -9,10 +9,10 @@ module.exports = (req, res, next) => {
     return
   }
   try {
-    const result = auth.verifyToken(headers.token)
+    auth.verifyToken(headers.token)
     next()
   } catch (error) {
     const errorRes = resHandler.getErrorMsg(error)
-    res.sendErr(errorRes)  
+    res.sendErr(errorRes)
   }
 }

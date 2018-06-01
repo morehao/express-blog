@@ -16,5 +16,9 @@ module.exports = {
   getErrorRes (error) {
     const result = errorMsg[error] ? errorMsg[error] : errorMsg['SERVER_ERROR']
     return result
+  },
+  getModelError (model) {
+    const result = errorSystem[model] ? errorSystem[model] : 'SERVER_ERROR'
+    return result
   }
 }

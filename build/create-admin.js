@@ -2,7 +2,6 @@
 
 const mdbs = require('../app/models')
 const myutil = require('../app/myutil')
-const configs = require('../app/config')
 
 module.exports = async (name, password, saltKey) => {
   try {

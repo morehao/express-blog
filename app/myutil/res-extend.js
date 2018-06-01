@@ -1,8 +1,7 @@
 'use strict'
 const lodash = require('lodash')
 
-const configs = require('../config')
-module.exports = (req,res,next) => {
+module.exports = (req, res, next) => {
   const extendAttr = {
     sendOk: (data) => {
       const rst = {
@@ -16,6 +15,6 @@ module.exports = (req,res,next) => {
       return res.send(lodash.extend(errorInfo))
     }
   }
-  lodash.extend(res,extendAttr)
+  lodash.extend(res, extendAttr)
   next()
 }
