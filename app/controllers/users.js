@@ -2,16 +2,11 @@
 const moment = require('moment')
 
 const Services = require('../services')
-const BaseController = require('./base')
-const returns = require('./return')
 const mdbs = require('../models')
 const myutil = require('../myutil')
 const configs = require('../config')
 
-class UsersController extends BaseController {
-  constructor () {
-    super()
-  }
+class UsersController {
   async create (req, res) {
     const result = await Services.users.create(req.body)
     res.sendOk(result)

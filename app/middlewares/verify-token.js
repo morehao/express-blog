@@ -12,7 +12,6 @@ module.exports = (req, res, next) => {
   }
   try {
     const result = auth.verifyToken(headers.token)
-    console.log('result:', result)
     next()
   } catch (error) {
     if (error.message === "invalid token") {
@@ -20,7 +19,7 @@ module.exports = (req, res, next) => {
         errorMsg: 'TOKEN_IS_INVALID'
       })
       return
-    } else {
+    } else if (error.message === "jwt expired") {
       res.sendOk({
         errorMsg: 'TOKEN_HAS_EXPIRED'
       })
