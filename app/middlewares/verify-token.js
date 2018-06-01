@@ -1,30 +1,18 @@
 'use strict'
-const {auth} = require('../myutil')
-const {errorMsg} = require('../config')
+const {auth, resHandler} = require('../myutil')
 
 module.exports = (req, res, next) => {
   const headers = req.headers
   if (!headers.token) {
-    res.sendOk({
-      errorMsg: 'TOKEN_IS_MISSING'
-    })
+    const errorRes = resHandler.getErrorRes('TOKEN_IS_MISSING')
+    res.sendErr(errorRes)
     return
   }
   try {
     const result = auth.verifyToken(headers.token)
     next()
   } catch (error) {
-    if (error.message === "invalid token") {
-      res.sendOk({
-        errorMsg: 'TOKEN_IS_INVALID'
-      })
-      return
-    } else if (error.message === "jwt expired") {
-      res.sendOk({
-        errorMsg: 'TOKEN_HAS_EXPIRED'
-      })
-      return
-    }
-    
+    const errorRes = resHandler.getErrorMsg(error)
+    res.sendErr(errorRes)  
   }
 }

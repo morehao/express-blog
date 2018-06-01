@@ -1,70 +1,44 @@
 'use strict'
 const mdbs = require('../models')
-const myutil = require('../myutil')
+const {crypto, format, resHandler} = require('../myutil')
 const configs = require('../config')
 class UserService {
   async create (params) {
     try {
+      let result
       const findRes = await mdbs.User.findOne({name: params.name})
       if (findRes) {
-        const result = {
-          errorMsg: 'USER_HAS_EXITS'
-        }
-        return result
+        throw 'USER_HAS_EXITS'
       } else {
-        params.password = myutil.crypto.encrypted(params.password, configs.settings.saltKey)
-        const result = await mdbs.User.create(params)
-        return result
-      }
-    } catch (error) {
-      const result = {
-        errorMsg: 'USER_QUEY_FAILED'
+        params.password = crypto.encrypted(params.password, configs.settings.saltKey)
+        result = await mdbs.User.create(params)
       }
       return result
+    } catch (error) {
+      throw error
     }  
   }
   async destroy (params) {
     try {
       const findRes = await mdbs.User.findById(params)
       if (!findRes) {
-        const result = {
-          errorMsg: 'USER_NOT_EXITS'
-        }
-        return result
-      } else {
-        await mdbs.User.remove({_id: params})
-        const result = {
-          successMsg: 'USER_DELETE_SUCCESS'
-        }
-        return result
+        throw 'USER_NOT_EXITS'
       }
-    } catch (error) {
-      const result = {
-        errorMsg: 'USER_DELETE_FAILED'
-      }
+      await mdbs.User.remove({_id: params})
+      const result = resHandler.getSuccessMsg('USER_DELETE_SUCCESS')
       return result
+    } catch (error) {
+      throw error
     }
   }
   async update (params) {
     try {
       const findRes = await mdbs.User.findById(params._id)
-      if (!findRes) {
-        const result = {
-          errorMsg: 'USER_NOT_EXITS'
-        }
-        return result
-      } else {
-        await mdbs.User.update({_id: params._id}, {$set: params})
-        const result = {
-          successMsg: 'USER_UPDATE_SUCCESS'
-        }
-        return result
-      }
-    } catch (error) {
-      const result = {
-        errorMsg: 'USER_UPDATE_FAILED'
-      }
+      await mdbs.User.update({_id: params._id}, {$set: params})
+      const result = resHandler.getSuccessMsg('USER_UPDATE_SUCCESS')
       return result
+    } catch (error) {
+      throw 'USER_UPDATE_FAILED'
     }
   }
   async list (params) {
@@ -74,13 +48,10 @@ class UserService {
   async detail (params) {
     try {
       const findRes = await mdbs.User.findById(params)
-      const result =  myutil.format.user(findRes.toObject())
+      const result =  format.user(findRes.toObject())
       return result
     } catch (error) {
-      const result = {
-        errorMsg: 'USER_QUERY_FAILED'
-      }
-      return result
+      throw 'USER_NOT_EXITS'
     }
   }
   async login (params) {
@@ -93,15 +64,15 @@ class UserService {
         }
         return result
       } else {
-        const inputPasswd = myutil.crypto.encrypted(params.password, configs.settings.saltKey)
-        const equal = await myutil.crypto.checkPasswd(inputPasswd, findRes.password)
+        const inputPasswd = crypto.encrypted(params.password, configs.settings.saltKey)
+        const equal = await crypto.checkPasswd(inputPasswd, findRes.password)
         if (!equal) {
           const result = {
             errorMsg: 'USER_PASSWORD_WRONG'
           }
           return result
         } else {
-          const result = myutil.format.user(findRes.toObject())
+          const result = format.user(findRes.toObject())
           return result
         }
       }

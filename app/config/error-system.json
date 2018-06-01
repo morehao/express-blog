@@ -1,0 +1,5 @@
+{
+  "invalid token": "TOKEN_IS_INVALID",
+  "jwt expired": "TOKEN_HAS_EXPIRED",
+  "serverError": "SERVER_ERROR"
+}
