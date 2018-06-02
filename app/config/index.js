@@ -7,5 +7,4 @@ configs.errorSystem = require('./error-system.json')
 configs.pageConfig = require('./pagesize')
 configs.settings = require('./settings')
 configs.enum = require('./enum')
-
 module.exports = configs
