@@ -11,6 +11,7 @@ const myutil = require('./app/myutil')
 
 // 日志配置
 const log = log4js.getLogger('startup')
+log.info('The info is:')
 log4js.configure('./app/config/log4js.json')
 app.use(log4js.connectLogger(log4js.getLogger('http'), {level: 'auto'}))
 

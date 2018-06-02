@@ -1,9 +1,14 @@
 {
-  "appenders": {
+  "appenders":  {
     "access": {
-      "type": "dateFile",
-      "filename": "./logs/access.log",
-      "pattern": "-yyyy-MM-dd",
+      "type": "DateFile",
+      "filename": "./logs/access",
+      "pattern": "-yyyy-MM-dd.log",
+      "alwaysIncludePattern": true,
+      "category": "http"
+    },
+    "request": {
+      "type": "console",
       "category": "http"
     },
     "app": {
@@ -13,8 +18,10 @@
       "numBackups": 3
     },
     "errorFile": {
-      "type": "file",
-      "filename": "./logs/errors.log"
+      "type": "DateFile",
+      "filename": "./logs/errors",
+      "pattern": "-yyyy-MM-dd.log",
+      "alwaysIncludePattern": true
     },
     "errors": {
       "type": "logLevelFilter",
@@ -24,6 +31,6 @@
   },
   "categories": {
     "default": { "appenders": [ "app", "errors" ], "level": "DEBUG" },
-    "http": { "appenders": [ "access"], "level": "DEBUG" }
+    "http": { "appenders": ["access", "request"], "level": "DEBUG" }
   }
 }
