@@ -7,7 +7,7 @@
     "dev": "nodemon --inspect server.js",
     "build": "node ./build/server.js",
     "start": "node server.js",
-    "test": "mocha",
+    "test": "mocha test/**/*.js",
     "standard": "standard",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
@@ -21,10 +21,14 @@
     "mocha": "^5.2.0",
     "nodemon": "^1.17.3",
     "pre-commit": "^1.2.2",
-    "standard": "^11.0.1"
+    "standard": "^11.0.1",
+    "supertest": "^3.1.0"
   },
   "standard": {
-    "globals": ["describe", "it"]
+    "globals": [
+      "describe",
+      "it"
+    ]
   },
   "dependencies": {
     "amqplib": "^0.5.2",

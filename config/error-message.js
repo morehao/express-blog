@@ -55,6 +55,11 @@ module.exports = {
     errorCode: 100009,
     errorMsg: 'token已经过期'
   },
+  USER_ADD_FAILED: {
+    status: 200,
+    errorCode: 100010,
+    errorMsg: '用户创建失败'
+  },
   LIST_QUERY_FAILDE: {
     status: 200,
     errorCode: 200000,

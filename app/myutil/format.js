@@ -9,7 +9,7 @@ module.exports = {
     if (!date) {
       result = ''
     } else {
-      result = moment(date).format('YYYY-MM-DD HH-mm-ss')
+      result = moment(date).format('YYYY-MM-DD HH:mm:ss')
     }
     return result
   },

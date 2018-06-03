@@ -8,12 +8,12 @@ class BaseService {
   }
   async list (params) {
     try {
-      const result = mdb[this.model]
+      const query = mdb[this.model]
         .find(params.condition, this.adventures, {lean: true})
         .skip(params.skipCount)
         .limit(params.pagesize)
         .sort({created_at: Number(params.sortRule)})
-      return result
+      return await query
     } catch (error) {
       const modelErrorMsg = resHandler.getModelError(this.model)
       throw modelErrorMsg

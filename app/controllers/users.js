@@ -6,7 +6,7 @@ const {pageConfig} = require('../../config')
 class UsersController {
   async create (req, res) {
     try {
-      const result = await Services.users.create(req.body)
+      const result = await Services.users.addUser(req.body)
       res.sendOk(result)
     } catch (error) {
       const errorRes = resHandler.getErrorRes(error)
@@ -43,7 +43,7 @@ class UsersController {
         pagesize: offset.pagesize,
         sortRule: offset.sortRule
       }
-      const userList = await Services.users.list(queryObj)
+      const userList = await Services.users.getUserList(queryObj)
       const result = userList.map(data => {
         return format.user(data)
       })
