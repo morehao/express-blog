@@ -1,6 +1,6 @@
 'use strict'
 const jwt = require('jsonwebtoken')
-const {settings} = require('../config')
+const {settings} = require('../../config')
 
 module.exports = {
   createToken (uuid) {

@@ -1,7 +1,7 @@
 'use strict'
 const Services = require('../services')
 const {auth, format, resHandler, paramsHandler} = require('../myutil')
-const {pageConfig} = require('../config')
+const {pageConfig} = require('../../config')
 
 class UsersController {
   async create (req, res) {

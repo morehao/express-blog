@@ -1,6 +1,6 @@
 'use strict'
 
-const enums = require('../config/enum')
+const enums = require('../../config/enum')
 const moment = require('moment')
 
 module.exports = {

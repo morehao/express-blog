@@ -1,6 +1,6 @@
 'use strict'
 
-const {errorMsg, successMsg, errorSystem} = require('../config')
+const {errorMsg, successMsg, errorSystem} = require('../../config')
 
 module.exports = {
   getSuccessMsg (succMsg) {

@@ -2,7 +2,7 @@
 const BaseService = require('./base')
 const mdbs = require('../models')
 const {crypto, format, resHandler} = require('../myutil')
-const configs = require('../config')
+const configs = require('../../config')
 class UserService extends BaseService {
   constructor (model) {
     super(model)

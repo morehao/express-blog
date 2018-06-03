@@ -6,13 +6,13 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const log4js = require('log4js')
 
-const {settings} = require('./app/config')
+const {settings} = require('./config')
 const myutil = require('./app/myutil')
 
 // 日志配置
 const log = log4js.getLogger('startup')
 log.info('The info is:')
-log4js.configure('./app/config/log4js.json')
+log4js.configure('./config/log4js.json')
 app.use(log4js.connectLogger(log4js.getLogger('http'), {level: 'auto'}))
 
 // 配置静态文件

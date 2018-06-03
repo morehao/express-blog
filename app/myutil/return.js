@@ -1,5 +1,5 @@
 'use strict'
-const configs = require('../config')
+const configs = require('../../config')
 
 module.exports = {
   // 成功提示的返回
