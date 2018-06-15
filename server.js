@@ -5,10 +5,11 @@ const app = express()
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const log4js = require('log4js')
+const cors = require('cors')
 
 const {settings} = require('./config')
 const myutil = require('./app/myutil')
-
+const routes = require('./app/routes/routes') // 引入路由
 // 日志配置
 const log = log4js.getLogger('startup')
 log.info('The info is:')
@@ -25,7 +26,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(myutil.resExtend)
 
-var routes = require('./app/routes/routes') // 引入路由
+app.use(cors()) // 跨域配置
+
 routes(app) // 注册路由
 
 app.listen(settings.port)

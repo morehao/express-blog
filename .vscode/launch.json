@@ -8,7 +8,12 @@
       "type": "node",
       "request": "launch",
       "name": "启动程序",
-      "program": "${workspaceFolder}\\server.js"
+      "runtimeExecutable": "nodemon",
+      "program": "${workspaceFolder}\\server.js",
+      "restart": true,
+      "skipFiles": [
+        "${workspaceFolder}/node_modules/**/*.js"
+      ]
     }
   ]
 }

@@ -17,6 +17,7 @@
     "standard"
   ],
   "devDependencies": {
+    "cors": "^2.8.4",
     "eslint": "^4.19.1",
     "mocha": "^5.2.0",
     "nodemon": "^1.17.3",
