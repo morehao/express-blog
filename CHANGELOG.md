@@ -1,5 +1,5 @@
 <a name="1.0.0"></a>
-# 1.0.0 (2018-06-15)
+# 1.0.0 (2018-06-22)
 
 
 ### Bug Fixes
@@ -13,6 +13,7 @@
 
 * **build:** 初始化创建管理员用户 ([497f904](https://github.com/morehao/express-restfulApi/commit/497f904))
 * **changelog:** 新增commit提交日志 ([cca17a2](https://github.com/morehao/express-restfulApi/commit/cca17a2))
+* **cros:** 设置跨域访问 ([744cdd7](https://github.com/morehao/express-restfulApi/commit/744cdd7))
 * **data-return:** 对返回的数据进行格式化处理 ([762ef76](https://github.com/morehao/express-restfulApi/commit/762ef76))
 * **error-handler:** 通过中间件对错误进行统一处理 ([96fb203](https://github.com/morehao/express-restfulApi/commit/96fb203))
 * **log4js:** 请求日志console到命令行终端工具 ([db27a8f](https://github.com/morehao/express-restfulApi/commit/db27a8f))

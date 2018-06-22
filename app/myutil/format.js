@@ -20,7 +20,11 @@ module.exports = {
     delete data.password
     data.created_at = this.formatDate(data.created_at)
     data.updated_at = this.formatDate(data.updated_at)
-    data.lastLogin = this.formatDate(data.lastLogin)
+    if (data.lastLogin) {
+      data.lastLogin = this.formatDate(data.lastLogin)
+    } else {
+      data.lastLogin = '暂无登录记录'
+    }
     return data
   }
 }

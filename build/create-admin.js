@@ -14,6 +14,7 @@ module.exports = async (name, password, saltKey) => {
       mdbs.User.create({
         name: name,
         nickname: name,
+        sex: 'male',
         password: newPwd
       })
       console.log('admin用户添加成功')

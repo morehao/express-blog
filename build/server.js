@@ -7,7 +7,7 @@ const bodyParser = require('body-parser')
 
 app.use(express.static(path.join(__dirname, 'public')))
 
-const configs = require('../app/config')
+const configs = require('../config')
 
 const inits = require('./index')
 
@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 app.listen(configs.settings.port)
-console.log('express-frame server started on: ' + configs.settings.port)
+console.log('express-blog server started on: ' + configs.settings.port)
 
 inits.createAdmin('admin', '123456', configs.settings.saltKey)
 

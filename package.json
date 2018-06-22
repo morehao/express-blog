@@ -1,7 +1,7 @@
 {
-  "name": "express-frame",
+  "name": "express-blog",
   "version": "1.0.0",
-  "description": "express-frame",
+  "description": "express-blog",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --inspect server.js",

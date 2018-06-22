@@ -44,10 +44,10 @@ class UsersController {
         sortRule: offset.sortRule
       }
       const userList = await Services.users.getUserList(queryObj)
-      const result = userList.map(data => {
+      userList.list = userList.list.map(data => {
         return format.user(data)
       })
-      res.sendOk(result)
+      res.sendOk(userList)
     } catch (error) {
       const errorRes = resHandler.getErrorRes(error)
       res.sendErr(errorRes)

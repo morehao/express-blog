@@ -12,7 +12,6 @@ const myutil = require('./app/myutil')
 const routes = require('./app/routes/routes') // 引入路由
 // 日志配置
 const log = log4js.getLogger('startup')
-log.info('The info is:')
 log4js.configure('./config/log4js.json')
 app.use(log4js.connectLogger(log4js.getLogger('http'), {level: 'auto'}))
 
@@ -31,6 +30,6 @@ app.use(cors()) // 跨域配置
 routes(app) // 注册路由
 
 app.listen(settings.port)
-console.log('express-frame server started on: ' + settings.port)
-log.info('express-frame server listening on', settings.port)
+console.log('express-blog server started on: ' + settings.port)
+log.info('express-blog server listening on', settings.port)
 module.exports = app

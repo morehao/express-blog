@@ -104,7 +104,6 @@ class UserService extends BaseService {
     }
   }
   async test (params) {
-    console.log('this:', this)
     this.body = 2
     const result = super.getUserByName(params)
     return result

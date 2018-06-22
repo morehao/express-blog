@@ -13,7 +13,12 @@ class BaseService {
         .skip(params.skipCount)
         .limit(params.pagesize)
         .sort({created_at: Number(params.sortRule)})
-      return await query
+      const dataCount = await mdb[this.model].count()
+      const list = await query
+      return {
+        dataCount: dataCount,
+        list: list
+      }
     } catch (error) {
       const modelErrorMsg = resHandler.getModelError(this.model)
       throw modelErrorMsg
