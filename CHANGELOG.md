@@ -1,5 +1,5 @@
 <a name="1.0.0"></a>
-# 1.0.0 (2018-06-22)
+# 1.0.0 (2018-07-02)
 
 
 ### Bug Fixes
@@ -16,6 +16,7 @@
 * **cros:** 设置跨域访问 ([744cdd7](https://github.com/morehao/express-restfulApi/commit/744cdd7))
 * **data-return:** 对返回的数据进行格式化处理 ([762ef76](https://github.com/morehao/express-restfulApi/commit/762ef76))
 * **error-handler:** 通过中间件对错误进行统一处理 ([96fb203](https://github.com/morehao/express-restfulApi/commit/96fb203))
+* **list:** 分页处理，增加总数据数目dataCount ([f8d7c68](https://github.com/morehao/express-restfulApi/commit/f8d7c68))
 * **log4js:** 请求日志console到命令行终端工具 ([db27a8f](https://github.com/morehao/express-restfulApi/commit/db27a8f))
 * **log4js:** 通过log4js记录程序日志 ([d131947](https://github.com/morehao/express-restfulApi/commit/d131947))
 * **mocha-test:** 利用mocha测试框架编写单元测试 ([7baa7e4](https://github.com/morehao/express-restfulApi/commit/7baa7e4))
