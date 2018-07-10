@@ -12,6 +12,7 @@ const UserSchema = new Schema({
   website: String, // 个人网站
   intruction: { type: String, default: '这个人很懒，什么都有没留下、、、' },
   logo: { type: String, default: '/upload/images/defaultlogo.png' },
+  role: {type: String, default: 'ordinary users'},
   lastLogin: Date,
   created_at: {
     type: Date,

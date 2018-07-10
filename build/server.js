@@ -7,20 +7,20 @@ const bodyParser = require('body-parser')
 
 app.use(express.static(path.join(__dirname, 'public')))
 
-const configs = require('../config')
+const {settings} = require('../config')
 
 const inits = require('./index')
 
 // 连接数据库
 mongoose.Promise = global.Promise // 将mongoose自身的promise替代为ES6promise
-mongoose.connect(configs.settings.dbConfig.URL)
+mongoose.connect(settings.dbConfig.URL)
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
-app.listen(configs.settings.port)
-console.log('express-blog server started on: ' + configs.settings.port)
+app.listen(settings.port)
+console.log('express-blog server started on: ' + settings.port)
 
-inits.createAdmin('admin', '123456', configs.settings.saltKey)
+inits.createAdmin(settings.adminConfig.name, settings.adminConfig.password, settings.saltKey, settings.adminConfig.role)
 
 module.exports = app

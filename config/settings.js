@@ -8,13 +8,17 @@ module.exports = {
   port: process.env.PORT || 4000,
   // mongodb数据库配置
   dbConfig: {
-    URL: 'mongodb://127.0.0.1:27017/express-frame',
-    DB: 'express-frame',
+    URL: 'mongodb://127.0.0.1:27017/express-blog',
+    DB: 'express-blog',
     HOST: '127.0.0.1',
     PORT: 27017,
     USERNAME: 'morehao',
     PASSWORD: 'morehao'
+  },
+  adminConfig: {
+    name: 'admin',
+    password: '123456',
+    role: 'ordinary users'
   }
-
   // redis数据库配置
 }

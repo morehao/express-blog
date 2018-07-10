@@ -3,7 +3,7 @@
 const mdbs = require('../app/models')
 const myutil = require('../app/myutil')
 
-module.exports = async (name, password, saltKey) => {
+module.exports = async (name, password, saltKey, role) => {
   try {
     const findRes = await mdbs.User.findOne({name: name})
     if (findRes) {
@@ -15,7 +15,8 @@ module.exports = async (name, password, saltKey) => {
         name: name,
         nickname: name,
         sex: 'male',
-        password: newPwd
+        password: newPwd,
+        role: role
       })
       console.log('admin用户添加成功')
       return 'admin用户添加成功'
