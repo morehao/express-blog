@@ -13,5 +13,7 @@
 11、使用log4js管理日志<br>
 12、使用mocha框架编写测试代码<br>
 13、设置跨域访问<br>
+14、优化日志，格式化日志信息，但仍需修改<br>
 参考资料：<br>
-https://www.codementor.io/olatundegaruba/nodejs-restful-apis-in-10-minutes-q0sgsfhbd<br>
+[restful api](https://www.codementor.io/olatundegaruba/nodejs-restful-apis-in-10-minutes-q0sgsfhbd)<br>
+[log4js](https://juejin.im/post/5b7d0e20f265da43231f00d4)

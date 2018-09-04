@@ -4,7 +4,6 @@ const path = require('path')
 const app = express()
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
-const log4js = require('log4js')
 const cors = require('cors')
 
 const {settings} = require('./config')
@@ -12,9 +11,8 @@ const myutil = require('./app/myutil')
 const routes = require('./app/routes/routes') // 引入路由
 
 // 日志配置
-const log = log4js.getLogger('startup')
-log4js.configure('./config/log4js.json')
-app.use(log4js.connectLogger(log4js.getLogger('http'), {level: 'auto'}))
+const {log} = require('./app/middlewares')
+app.all('*', log)
 
 // 配置静态文件
 app.use(express.static(path.join(__dirname, 'app/public')))
@@ -38,6 +36,5 @@ routes(app)
 
 app.listen(settings.port)
 console.log('express-blog server started on: ' + settings.port)
-log.info('express-blog server listening on', settings.port)
 
 module.exports = app

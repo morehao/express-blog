@@ -1,5 +1,10 @@
 <a name="1.0.0"></a>
-# 1.0.0 (2018-07-02)
+# [1.0.0](https://github.com/morehao/express-restfulApi/compare/v0.0.2...v1.0.0) (2018-09-04)
+
+
+
+<a name="0.0.2"></a>
+## [0.0.2](https://github.com/morehao/express-restfulApi/compare/v0.0.1...v0.0.2) (2018-07-10)
 
 
 ### Bug Fixes
@@ -21,6 +26,8 @@
 * **log4js:** 通过log4js记录程序日志 ([d131947](https://github.com/morehao/express-restfulApi/commit/d131947))
 * **mocha-test:** 利用mocha测试框架编写单元测试 ([7baa7e4](https://github.com/morehao/express-restfulApi/commit/7baa7e4))
 * **package-lock:** 删除package-lock.json,重新生成该文件 ([e21aa6d](https://github.com/morehao/express-restfulApi/commit/e21aa6d))
+* **role-right:** 权限管理model文件 ([91223ec](https://github.com/morehao/express-restfulApi/commit/91223ec))
+* **study-async:** 新增node改写回调函数的学习 ([dfd2ccc](https://github.com/morehao/express-restfulApi/commit/dfd2ccc))
 * **token:** JWT实现token机制 ([bcbefae](https://github.com/morehao/express-restfulApi/commit/bcbefae))
 * **user-login:** 新增用户登录接口 ([0fb860d](https://github.com/morehao/express-restfulApi/commit/0fb860d))
 * **users:** 用户管理的增删改查基本接口 ([54b534d](https://github.com/morehao/express-restfulApi/commit/54b534d))
