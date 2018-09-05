@@ -14,18 +14,18 @@ const UserSchema = new Schema({
   logo: { type: String, default: '/upload/images/defaultlogo.png' },
   role: {type: String, default: 'ordinary users'},
   lastLogin: Date,
-  created_at: {
+  createdAt: {
     type: Date,
     default: Date.now
   },
-  updated_at: {
+  updatedAt: {
     type: Date,
     default: Date.now
   }
 }, {
   timestamps: {
-    createdAt: 'created_at',
-    updatedAt: 'updated_at'
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   }
 })
 
@@ -35,10 +35,10 @@ UserSchema.set('toObject', { getters: true, virtuals: true })
 UserSchema.path('lastLogin').get(function (v) {
   return moment(v).format('YYYY-MM-DD HH:mm:ss')
 })
-UserSchema.path('created_at').get(function (v) {
+UserSchema.path('createdAt').get(function (v) {
   return moment(v).format('YYYY-MM-DD HH:mm:ss')
 })
-UserSchema.path('updated_at').get(function (v) {
+UserSchema.path('updatedAt').get(function (v) {
   return moment(v).format('YYYY-MM-DD HH:mm:ss')
 })
 

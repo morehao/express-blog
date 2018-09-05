@@ -6,13 +6,22 @@ class BaseService {
     this.model = model
     this.adventures = null
   }
+  async findOne (params) {
+    try {
+      const data = await mdb[this.model].findOne(params, this.adventures, {lean: true})
+      return data
+    } catch (error) {
+      const modelErrorMsg = resHandler.getModelError(this.model)
+      throw modelErrorMsg
+    }
+  }
   async list (params) {
     try {
       const query = mdb[this.model]
         .find(params.condition, this.adventures, {lean: true})
         .skip(params.skipCount)
         .limit(params.pagesize)
-        .sort({created_at: Number(params.sortRule)})
+        .sort({createdAt: Number(params.sortRule)})
       const dataCount = await mdb[this.model].count()
       const list = await query
       return {

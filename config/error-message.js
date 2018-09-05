@@ -89,5 +89,10 @@ module.exports = {
     status: 200,
     errorCode: 20201,
     errorMsg: '该路由不存在'
+  },
+  CATEGORY_HAS_EXITS: {
+    status: 200,
+    errorCode: 20301,
+    errorMsg: '该分类已经存在'
   }
 }

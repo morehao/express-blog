@@ -5,7 +5,7 @@ const {settings} = require('../../config')
 module.exports = {
   createToken (uuid) {
     const token = jwt.sign(
-      {id: uuid},
+      {userId: uuid},
       settings.jwtSecret,
       {expiresIn: 3600 * 24}
     )

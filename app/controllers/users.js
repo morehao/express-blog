@@ -75,7 +75,7 @@ class UsersController {
   async login (req, res) {
     try {
       const result = await Services.users.login(req.body)
-      result.token = auth.createToken(result.id)
+      result.token = auth.createToken(result._id)
       res.sendOk(result)
     } catch (error) {
       const errorRes = resHandler.getErrorRes(error)

@@ -17,6 +17,8 @@ module.exports = function (app) {
     .get(Controllers.users.detail)
     .put(Controllers.users.update)
     .delete(Controllers.users.destroy)
+  app.route('/articlecategory')
+    .post(Controllers.articleCategory.create)
   // 错误处理中间件
   app.use(errorHandler)
 }

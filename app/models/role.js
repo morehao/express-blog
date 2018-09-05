@@ -12,28 +12,28 @@ const RoleSchema = new Schema({
       ref: 'Rights'
     }
   ],
-  created_at: {
+  createdAt: {
     type: Date,
     default: Date.now
   },
-  updated_at: {
+  updatedAt: {
     type: Date,
     default: Date.now
   }
 }, {
   timestamps: {
-    createdAt: 'created_at',
-    updatedAt: 'updated_at'
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   }
 })
 
 RoleSchema.set('toJSON', { getters: true, virtuals: true })
 RoleSchema.set('toObject', { getters: true, virtuals: true })
 
-RoleSchema.path('created_at').get(function (v) {
+RoleSchema.path('createdAt').get(function (v) {
   return moment(v).format('YYYY-MM-DD HH:mm:ss')
 })
-RoleSchema.path('updated_at').get(function (v) {
+RoleSchema.path('updatedAt').get(function (v) {
   return moment(v).format('YYYY-MM-DD HH:mm:ss')
 })
 

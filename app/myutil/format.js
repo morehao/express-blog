@@ -18,8 +18,8 @@ module.exports = {
       data.reSex = enums.user[data.sex]
     }
     delete data.password
-    data.created_at = this.formatDate(data.created_at)
-    data.updated_at = this.formatDate(data.updated_at)
+    data.createdAt = this.formatDate(data.createdAt)
+    data.updatedAt = this.formatDate(data.updatedAt)
     if (data.lastLogin) {
       data.lastLogin = this.formatDate(data.lastLogin)
     } else {

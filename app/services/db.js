@@ -8,7 +8,7 @@ class DbService {
         .find(params.query)
         .skip(params.skipCount)
         .limit(params.pagesize)
-        .sort({created_at: Number(params.sortRule)})
+        .sort({createdAt: Number(params.sortRule)})
         .select('-password')
       return result
     } catch (error) {
