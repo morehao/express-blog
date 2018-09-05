@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, 'app/public')))
 
 // 连接数据库
 mongoose.Promise = global.Promise // 将mongoose自身的promise替代为ES6的promise
-mongoose.connect(settings.dbConfig.URL)
+mongoose.connect(settings.dbConfig.URL, { useNewUrlParser: true }) // MongoDB升级到4.0之后，需要加useNewUrlParser参数
 
 // 请求体解析中间件
 app.use(bodyParser.urlencoded({ extended: true }))

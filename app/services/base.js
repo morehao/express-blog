@@ -15,6 +15,15 @@ class BaseService {
       throw modelErrorMsg
     }
   }
+  async findById (id) {
+    try {
+      const data = await mdb[this.model].findById(id, {lean: true})
+      return data
+    } catch (error) {
+      const modelErrorMsg = resHandler.getModelError(this.model)
+      throw modelErrorMsg
+    }
+  }
   async list (params) {
     try {
       const query = mdb[this.model]
