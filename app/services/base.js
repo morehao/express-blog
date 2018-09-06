@@ -4,7 +4,7 @@ const {resHandler} = require('../myutil')
 class BaseService {
   constructor (model) {
     this.model = model
-    this.adventures = null
+    this.adventures = null // 相当于select,选择返回的属性
   }
   async findOne (params) {
     try {
@@ -18,6 +18,15 @@ class BaseService {
   async findById (id) {
     try {
       const data = await mdb[this.model].findById(id, {lean: true})
+      return data
+    } catch (error) {
+      const modelErrorMsg = resHandler.getModelError(this.model)
+      throw modelErrorMsg
+    }
+  }
+  async updateById (id, params) {
+    try {
+      const data = await mdb[this.model].update({_id: id}, {$set: params})
       return data
     } catch (error) {
       const modelErrorMsg = resHandler.getModelError(this.model)

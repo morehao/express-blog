@@ -1,5 +1,12 @@
 <a name="1.0.0"></a>
-# [1.0.0](https://github.com/morehao/express-restfulApi/compare/v0.0.2...v1.0.0) (2018-09-04)
+# [1.0.0](https://github.com/morehao/express-restfulApi/compare/v0.0.2...v1.0.0) (2018-09-06)
+
+
+### Features
+
+* **article-category:** 文章分类，建表和创建的接口 ([35d0b59](https://github.com/morehao/express-restfulApi/commit/35d0b59))
+* **base-service:** baseservice增加findById，家、公司都可搬砖 ([89808cb](https://github.com/morehao/express-restfulApi/commit/89808cb))
+* **logs:** 优化日志，格式化日志的保存与输出 ([a909324](https://github.com/morehao/express-restfulApi/commit/a909324))
 
 
 

@@ -1,6 +1,7 @@
 'use strict'
 const BaseService = require('./base')
 const mdb = require('../models')
+const {resHandler} = require('../myutil')
 
 class ArticleCategoryService extends BaseService {
   constructor (model) {
@@ -14,14 +15,36 @@ class ArticleCategoryService extends BaseService {
         userId: data.userId,
         name: data.name
       }
-      // const findRes = await super.findOne(query)
-      const findRes = await mdb.User.findOne(query, 'userId')
-      console.log('asad:', JSON.stringify(findRes))
+      const findRes = await super.findOne(query)
       if (findRes) {
         const errorMsg = 'CATEGORY_HAS_EXITS'
         throw errorMsg
       }
       const result = await mdb.ArticleCategory.create(data)
+      return result
+    } catch (error) {
+      throw error
+    }
+  }
+
+  async editById (id, params) {
+    try {
+      const findRes = await super.findById(id)
+      if (!findRes) {
+        const errorMsg = 'CATEGORY_NOT_EXITS'
+        throw errorMsg
+      }
+      await super.updateById(id, params)
+      const result = resHandler.getSuccessMsg('CATEGORY_UPDATE_SUCCESS')
+      return result
+    } catch (error) {
+      throw error
+    }
+  }
+
+  async getCategoryList (params) {
+    try {
+      const result = await super.list(params)
       return result
     } catch (error) {
       throw error

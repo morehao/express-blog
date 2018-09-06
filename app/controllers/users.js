@@ -38,7 +38,7 @@ class UsersController {
       // 翻页参数处理
       const offset = paramsHandler.offsetFormat(req.query, pageConfig.users)
       const queryObj = {
-        condition: {},
+        condition: req.query,
         skipCount: offset.skipCount,
         pagesize: offset.pagesize,
         sortRule: offset.sortRule
