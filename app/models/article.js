@@ -1,10 +1,11 @@
 'use strict'
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+const ObjectId = Schema.ObjectId
 const ArticleSchema = new Schema({
   title: { type: String },
   content: { type: String },
-  authorId: { type: String, ref: 'Users' },
+  authorId: { type: ObjectId, ref: 'Users' },
   top: { type: Boolean, default: false }, // 置顶文章
   good: { type: Boolean, default: false }, // 精华文章
   createAt: { type: Date, default: Date.now },
@@ -16,7 +17,7 @@ const ArticleSchema = new Schema({
     likeCount: {type: Number, default: 0}
   },
   contentType: { type: String, enum: ['html', 'markdown'] },
-  categoryId: { type: String, ref: 'ArticleCategory' },
+  categoryId: { type: ObjectId, ref: 'ArticleCategorys' },
   deleted: { type: Boolean, default: false }
 })
 

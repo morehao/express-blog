@@ -5,5 +5,6 @@ module.exports = {
   OPTION_SUCCESS: '操作成功！',
   ROUTER_DELETE_SUCCESS: '路由删除成功！',
   ROUTER_UPDATE_SUCCESS: '路由更新成功！',
-  CATEGORY_UPDATE_SUCCESS: '文章类别修改成功！'
+  CATEGORY_UPDATE_SUCCESS: '文章类别修改成功！',
+  ARTICLE_UPDATE_SUCCESS: '文章修改成功！'
 }

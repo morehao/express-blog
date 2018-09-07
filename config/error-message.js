@@ -94,5 +94,15 @@ module.exports = {
     status: 200,
     errorCode: 20301,
     errorMsg: '该分类已经存在'
+  },
+  ARTICLE_HAS_EXITS: {
+    status: 200,
+    errorCode: 20401,
+    errorMsg: '该文章已经存在'
+  },
+  ARTICLE_NOT_EXITS: {
+    status: 200,
+    errorCode: 20402,
+    errorMsg: '该文章不存在'
   }
 }

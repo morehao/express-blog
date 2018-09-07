@@ -30,18 +30,19 @@ class ArticleCategoryController {
     try {
       // 翻页参数处理
       const offset = paramsHandler.offsetFormat(req.query, pageConfig.users)
-      console.log(req.query)
       const queryObj = {
         condition: req.query,
         skipCount: offset.skipCount,
         pagesize: offset.pagesize,
-        sortRule: offset.sortRule
+        sortRule: offset.sortRule,
+        populate: [{path: 'userId', select: '-password'}]
       }
       const result = await Services.articleCategory.getCategoryList(queryObj)
       res.sendOk(result)
     } catch (error) {
-      const errorRes = resHandler.getErrorRes(error)
-      res.sendErr(errorRes)
+      // const errorRes = resHandler.getErrorRes(error)
+      // res.sendErr(errorRes)
+      res.sendErr(error)
     }
   }
 }
