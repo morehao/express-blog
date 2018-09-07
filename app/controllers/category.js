@@ -12,7 +12,7 @@ class CategoryController {
       }
       const userInfo = auth.verifyToken(req.headers.token)
       req.body.userId = userInfo.userId
-      const result = await Services.articleCategory.addCategory(req.body)
+      const result = await Services.category.addCategory(req.body)
       res.sendOk(result)
     } catch (error) {
       const errorRes = resHandler.getErrorRes(error)
@@ -22,7 +22,7 @@ class CategoryController {
 
   async update (req, res) {
     try {
-      const result = await Services.articleCategory.editById(req.params._id, req.body)
+      const result = await Services.category.editById(req.params._id, req.body)
       res.sendOk(result)
     } catch (error) {
       const errorRes = resHandler.getErrorRes(error)
@@ -41,7 +41,7 @@ class CategoryController {
         sortRule: offset.sortRule,
         populate: [{path: 'userId', select: '-password'}]
       }
-      const result = await Services.articleCategory.getCategoryList(queryObj)
+      const result = await Services.category.getCategoryList(queryObj)
       res.sendOk(result)
     } catch (error) {
       // const errorRes = resHandler.getErrorRes(error)

@@ -17,7 +17,7 @@ const ArticleSchema = new Schema({
     likeCount: {type: Number, default: 0}
   },
   contentType: { type: String, enum: ['html', 'markdown'] },
-  categoryId: { type: ObjectId, ref: 'ArticleCategorys' },
+  categoryId: { type: ObjectId, ref: 'Categorys' },
   deleted: { type: Boolean, default: false }
 })
 
