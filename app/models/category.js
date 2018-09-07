@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const moment = require('moment')
 const Schema = mongoose.Schema
 const ObjectId = Schema.ObjectId
-const ArticleCategorySchema = new Schema({
+const CategorySchema = new Schema({
   userId: {type: ObjectId, ref: 'Users'},
   name: {type: String, required: 'name is required'},
   sortCode: {type: Number}, // 类别编号
@@ -23,14 +23,14 @@ const ArticleCategorySchema = new Schema({
   }
 })
 
-ArticleCategorySchema.set('toJSON', { getters: true, virtuals: true })
-ArticleCategorySchema.set('toObject', { getters: true, virtuals: true })
+CategorySchema.set('toJSON', { getters: true, virtuals: true })
+CategorySchema.set('toObject', { getters: true, virtuals: true })
 
-ArticleCategorySchema.path('createdAt').get(function (v) {
+CategorySchema.path('createdAt').get(function (v) {
   return moment(v).format('YYYY-MM-DD HH:mm:ss')
 })
-ArticleCategorySchema.path('updatedAt').get(function (v) {
+CategorySchema.path('updatedAt').get(function (v) {
   return moment(v).format('YYYY-MM-DD HH:mm:ss')
 })
 
-module.exports = mongoose.model('ArticleCategorys', ArticleCategorySchema)
+module.exports = mongoose.model('Categorys', CategorySchema)

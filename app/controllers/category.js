@@ -1,11 +1,15 @@
 'use strict'
 const Services = require('../services')
-const {auth, resHandler, paramsHandler} = require('../myutil')
+const {auth, resHandler, paramsHandler, validator} = require('../myutil')
 const {pageConfig} = require('../../config')
 
-class ArticleCategoryController {
+class CategoryController {
   async create (req, res) {
     try {
+      if (validator.isEmpty(req.body.name, {ignore_whitespace: true})) {
+        const errorMsg = 'CATEGORYNAME_IS_EMPTY'
+        throw errorMsg
+      }
       const userInfo = auth.verifyToken(req.headers.token)
       req.body.userId = userInfo.userId
       const result = await Services.articleCategory.addCategory(req.body)
@@ -46,4 +50,4 @@ class ArticleCategoryController {
     }
   }
 }
-module.exports = new ArticleCategoryController()
+module.exports = new CategoryController()

@@ -3,7 +3,7 @@ const BaseService = require('./base')
 const mdb = require('../models')
 const {resHandler} = require('../myutil')
 
-class ArticleCategoryService extends BaseService {
+class CategoryService extends BaseService {
   constructor (model) {
     super(model)
     this.model = 'ArticleCategory'
@@ -51,4 +51,4 @@ class ArticleCategoryService extends BaseService {
     }
   }
 }
-module.exports = new ArticleCategoryService()
+module.exports = new CategoryService()

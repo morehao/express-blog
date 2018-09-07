@@ -1,10 +1,18 @@
 'use strict'
 const Services = require('../services')
-const {auth, resHandler, paramsHandler} = require('../myutil')
+const {auth, resHandler, paramsHandler, validator} = require('../myutil')
 const {pageConfig} = require('../../config')
 class ArticleController {
   async create (req, res) {
     try {
+      if (validator.isEmpty(req.body.title, {ignore_whitespace: true})) {
+        const errorMsg = 'TITLE_IS_EMPTY'
+        throw errorMsg
+      }
+      if (validator.isEmpty(req.body.content, {ignore_whitespace: true})) {
+        const errorMsg = 'CONTENT_IS_EMPTY'
+        throw errorMsg
+      }
       const userInfo = auth.verifyToken(req.headers.token)
       req.body.authorId = userInfo.userId
       const result = await Services.article.addArticle(req.body)

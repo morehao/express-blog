@@ -7,5 +7,6 @@ myutil.paramsHandler = require('./params-handler')
 myutil.resHandler = require('./response-handler')
 myutil.format = require('./format')
 myutil.auth = require('./authentication')
+myutil.validator = require('validator')
 
 module.exports = myutil

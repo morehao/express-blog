@@ -24,7 +24,8 @@
     "nodemon": "^1.17.3",
     "pre-commit": "^1.2.2",
     "standard": "^11.0.1",
-    "supertest": "^3.1.0"
+    "supertest": "^3.1.0",
+    "validator": "^10.7.1"
   },
   "standard": {
     "globals": [

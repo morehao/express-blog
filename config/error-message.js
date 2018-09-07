@@ -95,6 +95,11 @@ module.exports = {
     errorCode: 20301,
     errorMsg: '该分类已经存在'
   },
+  CATEGORYNAME_IS_EMPTY: {
+    status: 200,
+    errorCode: 20303,
+    errorMsg: '文章类别的名字不能为空'
+  },
   ARTICLE_HAS_EXITS: {
     status: 200,
     errorCode: 20401,
@@ -104,5 +109,15 @@ module.exports = {
     status: 200,
     errorCode: 20402,
     errorMsg: '该文章不存在'
+  },
+  TITLE_IS_EMPTY: {
+    status: 200,
+    errorCode: 20403,
+    errorMsg: '文章标题不能为空'
+  },
+  CONTENT_IS_EMPTY: {
+    status: 200,
+    errorCode: 20404,
+    errorMsg: '文章内容不能为空'
   }
 }
