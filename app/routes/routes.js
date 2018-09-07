@@ -22,6 +22,8 @@ module.exports = function (app) {
     .get(Controllers.articleCategory.list)
   app.route('/article-category/:_id')
     .put(Controllers.articleCategory.update)
+  app.route('/article')
+    .post(Controllers.article.create)
   // 错误处理中间件
   app.use(errorHandler)
 }

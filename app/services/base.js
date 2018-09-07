@@ -8,8 +8,8 @@ class BaseService {
   }
   async findOne (params) {
     try {
-      const data = await mdb[this.model].findOne(params, this.adventures, {lean: true})
-      return data
+      const result = await mdb[this.model].findOne(params, this.adventures, {lean: true})
+      return result
     } catch (error) {
       const modelErrorMsg = resHandler.getModelError(this.model)
       throw modelErrorMsg
@@ -17,8 +17,17 @@ class BaseService {
   }
   async findById (id) {
     try {
-      const data = await mdb[this.model].findById(id, {lean: true})
-      return data
+      const result = await mdb[this.model].findById(id, {lean: true})
+      return result
+    } catch (error) {
+      const modelErrorMsg = resHandler.getModelError(this.model)
+      throw modelErrorMsg
+    }
+  }
+  async save (params) {
+    try {
+      const result = await mdb[this.model].create(params)
+      return result
     } catch (error) {
       const modelErrorMsg = resHandler.getModelError(this.model)
       throw modelErrorMsg
@@ -26,8 +35,8 @@ class BaseService {
   }
   async updateById (id, params) {
     try {
-      const data = await mdb[this.model].update({_id: id}, {$set: params})
-      return data
+      const result = await mdb[this.model].update({_id: id}, {$set: params})
+      return result
     } catch (error) {
       const modelErrorMsg = resHandler.getModelError(this.model)
       throw modelErrorMsg
@@ -56,8 +65,8 @@ class BaseService {
     if (this.model === 'User') {
       query.select('-password')
     }
-    const findRes = await query
-    return findRes
+    const result = await query
+    return result
   }
 }
 
