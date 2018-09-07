@@ -41,7 +41,8 @@ class UsersController {
         condition: req.query,
         skipCount: offset.skipCount,
         pagesize: offset.pagesize,
-        sortRule: offset.sortRule
+        sortRule: offset.sortRule,
+        populate: []
       }
       const userList = await Services.users.getUserList(queryObj)
       userList.list = userList.list.map(data => {
