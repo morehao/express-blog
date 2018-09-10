@@ -30,6 +30,14 @@ class ArticleController {
       res.sendErr(error)
     }
   }
+  async upload (req, res) {
+    try {
+      console.log(req.file.path)
+      res.sendOk('success')
+    } catch (error) {
+      res.sendErr(error)
+    }
+  }
   async list (req, res) {
     try {
       // 翻页参数处理
