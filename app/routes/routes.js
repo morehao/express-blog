@@ -3,8 +3,6 @@ const successHandler = require('../middlewares/success-handler')
 const errorHandler = require('../middlewares/error-handler')
 const Controllers = require('../controllers')
 const middleware = require('../middlewares')
-const multer = require('multer')
-const upload = multer({dest: 'upload/'}).single('file')
 const middlewaresArr = [successHandler, middleware.verifyToken]
 
 module.exports = function (app) {
@@ -28,7 +26,7 @@ module.exports = function (app) {
     .get(Controllers.article.list)
   app.route('/article/:_id')
     .put(Controllers.article.update)
-  app.route('/upload', upload)
+  app.route('/upload')
     .post(Controllers.article.upload)
   // 错误处理中间件
   app.use(errorHandler)

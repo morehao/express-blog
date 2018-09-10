@@ -8,5 +8,6 @@ myutil.resHandler = require('./response-handler')
 myutil.format = require('./format')
 myutil.auth = require('./authentication')
 myutil.validator = require('validator')
+myutil.upload = require('./upload')
 
 module.exports = myutil

@@ -1,6 +1,6 @@
 'use strict'
 const Services = require('../services')
-const {auth, resHandler, paramsHandler, validator} = require('../myutil')
+const {auth, resHandler, paramsHandler, validator, upload} = require('../myutil')
 const {pageConfig} = require('../../config')
 class ArticleController {
   async create (req, res) {
@@ -32,7 +32,8 @@ class ArticleController {
   }
   async upload (req, res) {
     try {
-      console.log(req.file.path)
+      const result = await upload.getFileInfo(req)
+      console.log(result.files.file.path)
       res.sendOk('success')
     } catch (error) {
       res.sendErr(error)
@@ -53,9 +54,8 @@ class ArticleController {
       const result = await Services.article.getArticleList(queryObj)
       res.sendOk(result)
     } catch (error) {
-      // const errorRes = resHandler.getErrorRes(error)
-      // res.sendErr(errorRes)
-      res.sendErr(error)
+      const errorRes = resHandler.getErrorRes(error)
+      res.sendErr(errorRes)
     }
   }
 }

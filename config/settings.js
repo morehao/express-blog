@@ -19,6 +19,11 @@ module.exports = {
     name: 'admin',
     password: '123456',
     role: 'ordinary users'
+  },
+  qiniuConfig: {
+    accessKey: '',
+    secretKey: '',
+    bucket: 'express-blog'
   }
   // redis数据库配置
 }
