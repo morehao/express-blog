@@ -1,7 +1,11 @@
 'use strict'
+const qiniu = require('qiniu')
+const uuidv1 = require('uuid/v1')
+const path = require('path')
+// const fs = require('fs')
 const Services = require('../services')
 const {auth, resHandler, paramsHandler, validator, upload} = require('../myutil')
-const {pageConfig} = require('../../config')
+const {pageConfig, settings} = require('../../config')
 class ArticleController {
   async create (req, res) {
     try {
@@ -32,9 +36,35 @@ class ArticleController {
   }
   async upload (req, res) {
     try {
-      const result = await upload.getFileInfo(req)
-      console.log(result.files.file.path)
-      res.sendOk('success')
+      // console.log(req.file)
+      const uid = uuidv1()
+      const fileInfo = await upload.getFileInfo(req)
+      const filePath = fileInfo.files.file.path
+      // const fileName = fileInfo.files.file.name
+      const fileName = uid + path.extname(fileInfo.files.file.name).toLowerCase()
+      const {accessKey, secretKey, bucket} = settings.qiniuConfig
+      const mac = new qiniu.auth.digest.Mac(accessKey, secretKey)
+      const putPolicy = new qiniu.rs.PutPolicy({scope: bucket})
+      const uploadToken = putPolicy.uploadToken(mac)
+
+      const config = new qiniu.conf.Config()
+      config.zone = qiniu.zone.Zone_z1
+      const formUploader = new qiniu.form_up.FormUploader(config)
+      const putExtra = new qiniu.form_up.PutExtra()
+      formUploader.putFile(uploadToken, fileName, filePath, putExtra, function (respErr, respBody, respInfo) {
+        if (respErr) {
+          throw respErr
+        }
+        if (respInfo.statusCode === 200) {
+          console.log(respBody)
+        } else {
+          console.log(respInfo.statusCode)
+          console.log(respBody)
+        }
+      })
+      // Services.article.qiniuUpload(filePath, fileName)
+      // console.log('result:', result)
+      // res.sendOk(fileStream)
     } catch (error) {
       res.sendErr(error)
     }

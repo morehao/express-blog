@@ -1,9 +1,10 @@
 'use strict'
-const successHandler = require('../middlewares/success-handler')
-const errorHandler = require('../middlewares/error-handler')
+// const multer = require('multer')
+// const upload = multer({dest: 'upload/'}).single('file')
+
 const Controllers = require('../controllers')
 const middleware = require('../middlewares')
-const middlewaresArr = [successHandler, middleware.verifyToken]
+const middlewaresArr = [middleware.verifyToken]
 
 module.exports = function (app) {
   app.post('/users/test', Controllers.users.test)
@@ -26,8 +27,8 @@ module.exports = function (app) {
     .get(Controllers.article.list)
   app.route('/article/:_id')
     .put(Controllers.article.update)
+  // app.route('/upload')
+  //   .post(upload, Controllers.article.upload)
   app.route('/upload')
     .post(Controllers.article.upload)
-  // 错误处理中间件
-  app.use(errorHandler)
 }
