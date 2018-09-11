@@ -23,7 +23,8 @@ module.exports = {
   qiniuConfig: {
     accessKey: '',
     secretKey: '',
-    bucket: 'express-blog'
+    bucket: 'express-blog',
+    originUrl: ''
   }
   // redis数据库配置
 }

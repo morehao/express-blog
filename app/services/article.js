@@ -49,41 +49,26 @@ class ArticleService extends BaseService {
     }
   }
 
-  qiniuUpload (localFile, key) {
-    const {accessKey, secretKey, bucket} = settings
-    const mac = new qiniu.auth.digest.Mac(accessKey, secretKey)
-    const putPolicy = new qiniu.rs.PutPolicy({scope: bucket})
-    const uploadToken = putPolicy.uploadToken(mac)
-
-    const config = new qiniu.conf.Config()
-    config.zone = qiniu.zone.Zone_z1
-    const formUploader = new qiniu.form_up.FormUploader(config)
-    const putExtra = new qiniu.form_up.PutExtra()
-    formUploader.putFile(uploadToken, key, localFile, putExtra, function (respErr, respBody, respInfo) {
-      console.log('aaaaaaaaa')
-      if (respErr) {
-        throw respErr
-      }
-      if (respInfo.statusCode === 200) {
-        console.log(respBody)
-      } else {
-        console.log(respInfo.statusCode)
-        console.log(respBody)
-      }
-    })
-    // return new Promise(function (resolve, reject) {
-    //   formUploader.putFile(uploadToken, key, localFile, putExtra, function (respErr, respBody, respInfo) {
-    //     if (respErr) {
-    //       reject(respErr)
-    //       return
-    //     }
-    //     if (respInfo.statusCode === 200) {
-    //       resolve(respBody)
-    //     } else {
-    //       reject(new Error('上传失败:statusCode !== 200'))
-    //     }
-    //   })
-    // })
+  async qiniuUpload (localFile, key) {
+    try {
+      const {accessKey, secretKey, bucket} = settings.qiniuConfig
+      const mac = new qiniu.auth.digest.Mac(accessKey, secretKey)
+      const putPolicy = new qiniu.rs.PutPolicy({scope: bucket})
+      const uploadToken = putPolicy.uploadToken(mac)
+      const config = new qiniu.conf.Config()
+      config.zone = qiniu.zone.Zone_z1
+      const formUploader = new qiniu.form_up.FormUploader(config)
+      const putExtra = new qiniu.form_up.PutExtra()
+      return new Promise(function (resolve, reject) {
+        formUploader.putFile(uploadToken, key, localFile, putExtra, function (respErr, respBody, respInfo) {
+          if (respErr) return reject(respErr)
+          if (respInfo.statusCode === 200) return resolve(respBody)
+          reject(new Error('上传失败:statusCode !== 200'))
+        })
+      })
+    } catch (error) {
+      throw error
+    }
   }
 }
 module.exports = new ArticleService()

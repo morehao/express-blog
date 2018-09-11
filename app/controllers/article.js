@@ -1,5 +1,4 @@
 'use strict'
-const qiniu = require('qiniu')
 const uuidv1 = require('uuid/v1')
 const path = require('path')
 // const fs = require('fs')
@@ -36,35 +35,23 @@ class ArticleController {
   }
   async upload (req, res) {
     try {
-      // console.log(req.file)
       const uid = uuidv1()
       const fileInfo = await upload.getFileInfo(req)
+      // let tasks = []
+      // for (let item in fileInfo.files) {
+      //   const filePath = fileInfo.files[item].path
+      //   const fileName = uid + path.extname(fileInfo.files[item].name).toLowerCase()
+      //   tasks.push(Services.article.qiniuUpload(filePath, fileName))
+      // }
+      // const result = await Promise.all(tasks)
       const filePath = fileInfo.files.file.path
-      // const fileName = fileInfo.files.file.name
       const fileName = uid + path.extname(fileInfo.files.file.name).toLowerCase()
-      const {accessKey, secretKey, bucket} = settings.qiniuConfig
-      const mac = new qiniu.auth.digest.Mac(accessKey, secretKey)
-      const putPolicy = new qiniu.rs.PutPolicy({scope: bucket})
-      const uploadToken = putPolicy.uploadToken(mac)
-
-      const config = new qiniu.conf.Config()
-      config.zone = qiniu.zone.Zone_z1
-      const formUploader = new qiniu.form_up.FormUploader(config)
-      const putExtra = new qiniu.form_up.PutExtra()
-      formUploader.putFile(uploadToken, fileName, filePath, putExtra, function (respErr, respBody, respInfo) {
-        if (respErr) {
-          throw respErr
-        }
-        if (respInfo.statusCode === 200) {
-          console.log(respBody)
-        } else {
-          console.log(respInfo.statusCode)
-          console.log(respBody)
-        }
-      })
-      // Services.article.qiniuUpload(filePath, fileName)
-      // console.log('result:', result)
-      // res.sendOk(fileStream)
+      const uploadResult = await Services.article.qiniuUpload(filePath, fileName)
+      let result = {
+        imageUrl: settings.qiniuConfig.originUrl + uploadResult.key,
+        imageName: uploadResult.key
+      }
+      res.sendOk(result)
     } catch (error) {
       res.sendErr(error)
     }
