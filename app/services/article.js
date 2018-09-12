@@ -1,5 +1,6 @@
 'use strict'
 const qiniu = require('qiniu')
+const fs = require('fs')
 const BaseService = require('./base')
 const {resHandler} = require('../myutil')
 const {settings} = require('../../config')
@@ -66,6 +67,17 @@ class ArticleService extends BaseService {
           reject(new Error('上传失败:statusCode !== 200'))
         })
       })
+    } catch (error) {
+      throw error
+    }
+  }
+
+  async saveFile (filePath, target, fileName) {
+    try {
+      const readStream = fs.createReadStream(filePath)
+      const writeStream = fs.createWriteStream(target)
+      readStream.pipe(writeStream)
+      return fileName
     } catch (error) {
       throw error
     }

@@ -13,7 +13,6 @@ const routes = require('./app/routes/routes') // 引入路由
 // 日志配置
 const {log} = require('./app/middlewares')
 app.all('*', log)
-
 // 配置静态文件
 app.use(express.static(path.join(__dirname, 'app/public')))
 

@@ -22,6 +22,8 @@ coverage
 # Dependency directories
 node_modules/
 
+app/public/upload/
+
 # Output of 'npm pack'
 *.tgz
 

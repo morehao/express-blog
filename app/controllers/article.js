@@ -1,7 +1,6 @@
 'use strict'
 const uuidv1 = require('uuid/v1')
 const path = require('path')
-// const fs = require('fs')
 const Services = require('../services')
 const {auth, resHandler, paramsHandler, validator, upload} = require('../myutil')
 const {pageConfig, settings} = require('../../config')
@@ -35,23 +34,43 @@ class ArticleController {
   }
   async upload (req, res) {
     try {
-      const uid = uuidv1()
       const fileInfo = await upload.getFileInfo(req)
       let tasks = []
-      for (let item in fileInfo.files) {
-        const filePath = fileInfo.files[item].path
-        const fileName = uid + path.extname(fileInfo.files[item].name).toLowerCase()
-        tasks.push(Services.article.qiniuUpload(filePath, fileName))
-      }
-      const qiniuRes = await Promise.all(tasks)
-      const result = qiniuRes.map(item => {
-        let obj = {
-          imageUrl: settings.qiniuConfig.originUrl + item.key,
-          imageName: item.key,
-          resource: 'qiniu'
+      let result
+      if (!settings.qiniuConfig.accessKey) {
+        let saveRes = []
+        for (let item in fileInfo.files) {
+          const uid = uuidv1()
+          const filePath = fileInfo.files[item].path
+          const fileName = uid + path.extname(fileInfo.files[item].name).toLowerCase()
+          const target = path.join('app/public/upload/images', fileName)
+          saveRes.push(await Services.article.saveFile(filePath, target, fileName))
         }
-        return obj
-      })
+        result = saveRes.map(item => {
+          let obj = {
+            imageUrl: `${settings.website}/upload/${item}`,
+            imageName: item,
+            resource: 'server'
+          }
+          return obj
+        })
+      } else {
+        for (let item in fileInfo.files) {
+          const uid = uuidv1()
+          const filePath = fileInfo.files[item].path
+          const fileName = uid + path.extname(fileInfo.files[item].name).toLowerCase()
+          tasks.push(Services.article.qiniuUpload(filePath, fileName))
+        }
+        const qiniuRes = await Promise.all(tasks)
+        result = qiniuRes.map(item => {
+          let obj = {
+            imageUrl: `${settings.qiniuConfig.originUrl}${item.key}`,
+            imageName: item.key,
+            resource: 'qiniu'
+          }
+          return obj
+        })
+      }
       res.sendOk(result)
     } catch (error) {
       res.sendErr(error)
