@@ -1,12 +1,25 @@
 <a name="1.0.0"></a>
-# [1.0.0](https://github.com/morehao/express-restfulApi/compare/v0.0.2...v1.0.0) (2018-09-06)
+# [1.0.0](https://github.com/morehao/express-restfulApi/compare/v0.0.2...v1.0.0) (2018-09-12)
+
+
+### Bug Fixes
+
+* **category:** category中controller命名修改 ([8c16c3b](https://github.com/morehao/express-restfulApi/commit/8c16c3b))
+* **users:** 用户列表接口修复，populate为空数组 ([9d3ec42](https://github.com/morehao/express-restfulApi/commit/9d3ec42))
 
 
 ### Features
 
-* **category:** 文章分类，建表和创建的接口 ([35d0b59](https://github.com/morehao/express-restfulApi/commit/35d0b59))
+* **article:** 上传接口，获取文件的信息 ([8d2a95f](https://github.com/morehao/express-restfulApi/commit/8d2a95f))
+* **article:** 文章的增、改、列表接口 ([09e8e08](https://github.com/morehao/express-restfulApi/commit/09e8e08))
+* **article:** 新增upload接口，还未实现接口的内部逻辑 ([aacb78b](https://github.com/morehao/express-restfulApi/commit/aacb78b))
+* **article:** 新增文章接口 ([e5b61a6](https://github.com/morehao/express-restfulApi/commit/e5b61a6))
+* **article-category:** 增加文章类别的修改和列表接口 ([9ec1810](https://github.com/morehao/express-restfulApi/commit/9ec1810))
+* **article-category:** 文章分类，建表和创建的接口 ([35d0b59](https://github.com/morehao/express-restfulApi/commit/35d0b59))
 * **base-service:** baseservice增加findById，家、公司都可搬砖 ([89808cb](https://github.com/morehao/express-restfulApi/commit/89808cb))
 * **logs:** 优化日志，格式化日志的保存与输出 ([a909324](https://github.com/morehao/express-restfulApi/commit/a909324))
+* **upload:** 上传图片到七牛云 ([ea89b23](https://github.com/morehao/express-restfulApi/commit/ea89b23))
+* **validator:** 添加validator校验 ([c5bda27](https://github.com/morehao/express-restfulApi/commit/c5bda27))
 
 
 

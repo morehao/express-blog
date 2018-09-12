@@ -37,20 +37,21 @@ class ArticleController {
     try {
       const uid = uuidv1()
       const fileInfo = await upload.getFileInfo(req)
-      // let tasks = []
-      // for (let item in fileInfo.files) {
-      //   const filePath = fileInfo.files[item].path
-      //   const fileName = uid + path.extname(fileInfo.files[item].name).toLowerCase()
-      //   tasks.push(Services.article.qiniuUpload(filePath, fileName))
-      // }
-      // const result = await Promise.all(tasks)
-      const filePath = fileInfo.files.file.path
-      const fileName = uid + path.extname(fileInfo.files.file.name).toLowerCase()
-      const uploadResult = await Services.article.qiniuUpload(filePath, fileName)
-      let result = {
-        imageUrl: settings.qiniuConfig.originUrl + uploadResult.key,
-        imageName: uploadResult.key
+      let tasks = []
+      for (let item in fileInfo.files) {
+        const filePath = fileInfo.files[item].path
+        const fileName = uid + path.extname(fileInfo.files[item].name).toLowerCase()
+        tasks.push(Services.article.qiniuUpload(filePath, fileName))
       }
+      const qiniuRes = await Promise.all(tasks)
+      const result = qiniuRes.map(item => {
+        let obj = {
+          imageUrl: settings.qiniuConfig.originUrl + item.key,
+          imageName: item.key,
+          resource: 'qiniu'
+        }
+        return obj
+      })
       res.sendOk(result)
     } catch (error) {
       res.sendErr(error)
