@@ -43,12 +43,12 @@ class ArticleController {
           const uid = uuidv1()
           const filePath = fileInfo.files[item].path
           const fileName = uid + path.extname(fileInfo.files[item].name).toLowerCase()
-          const target = path.join('app/public/upload/images', fileName)
+          const target = path.join(settings.upload.savePath, fileName)
           saveRes.push(await Services.article.saveFile(filePath, target, fileName))
         }
         result = saveRes.map(item => {
           let obj = {
-            imageUrl: `${settings.website}/upload/${item}`,
+            imageUrl: `${settings.website}${settings.upload.showPath}${item}`,
             imageName: item,
             resource: 'server'
           }

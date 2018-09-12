@@ -26,6 +26,10 @@ module.exports = {
     secretKey: '',
     bucket: 'express-blog',
     originUrl: ''
+  },
+  upload: {
+    savePath: 'app/public/upload',
+    showPath: '/upload/'
   }
   // redis数据库配置
 }
