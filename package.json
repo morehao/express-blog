@@ -19,9 +19,8 @@
   ],
   "apidoc": {
     "name": "express-blog接口文档",
-    "title": "express-blog restful api",
-    "version": "0.1.0",
-    "url": "localhost:4000/apidoc"
+    "title": "express-blog接口文档",
+    "version": "0.1.0"
   },
   "devDependencies": {
     "bluebird": "^3.5.1",

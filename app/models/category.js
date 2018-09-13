@@ -6,8 +6,6 @@ const ObjectId = Schema.ObjectId
 const CategorySchema = new Schema({
   userId: {type: ObjectId, ref: 'Users'},
   name: {type: String, required: 'name is required'},
-  sortCode: {type: Number}, // 类别编号
-  parentId: {type: String}, // 父类别的id
   createdAt: {
     type: Date,
     default: Date.now
