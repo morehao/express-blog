@@ -23,6 +23,7 @@ coverage
 node_modules/
 
 app/public/upload/
+app/public/apidoc/
 
 # Output of 'npm pack'
 *.tgz

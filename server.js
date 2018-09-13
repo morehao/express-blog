@@ -15,6 +15,8 @@ const {log} = require('./app/middlewares')
 app.all('*', log)
 // 配置静态文件
 app.use(express.static(path.join(__dirname, 'app/public')))
+// 配置apidoc
+app.use('/apidoc', express.static(path.join(__dirname, 'app/public/apidoc/')))
 
 // 连接数据库
 mongoose.Promise = global.Promise // 将mongoose自身的promise替代为ES6的promise
