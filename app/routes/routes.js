@@ -7,6 +7,7 @@ const middleware = require('../middlewares')
 const middlewaresArr = [middleware.verifyToken]
 
 module.exports = function (app) {
+  app.use(middleware.test)
   app.post('/users/test', Controllers.users.test)
   app.post('/users/login', Controllers.users.login)
   app.post('/users', Controllers.users.create)
@@ -31,4 +32,7 @@ module.exports = function (app) {
   //   .post(upload, Controllers.article.upload)
   app.route('/upload')
     .post(Controllers.article.upload)
+  app.route('/test')
+    .post(Controllers.test.testResponse)
+  // app.use(middleware.test)
 }
