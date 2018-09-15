@@ -11,9 +11,9 @@ log.i = function (req, resTime) {
 }
 
 // express中没有ctx，需要修改，TODO
-log.e = function (ctx, error, resTime) {
-  if (ctx && error) {
-    errorLog.error(formatError(ctx, error, resTime))
+log.e = function (req, error, resTime) {
+  if (req && error) {
+    errorLog.error(formatError(req, error, resTime))
   }
 }
 
@@ -38,12 +38,15 @@ const formatReqLog = function (req, resTime) {
   logText += 'request client ip:  ' + ip + '\n'
 
   // 请求参数
-  if (method === 'GET') {
+  if (req.query) {
     logText += 'request query:  ' + JSON.stringify(req.query) + '\n'
-  } else {
-    logText += 'request body: ' + '\n' + JSON.stringify(req.body) + '\n'
   }
-
+  if (req.boyd) {
+    logText += 'request query:  ' + JSON.stringify(req.body) + '\n'
+  }
+  if (req.params) {
+    logText += 'request query:  ' + JSON.stringify(req.params) + '\n'
+  }
   // 服务器响应时间
   logText += 'response time: ' + resTime + '\n'
 
@@ -62,9 +65,6 @@ const formatRes = function (res, resTime) {
   // 响应状态码
   logText += 'response status: ' + res.res.statusCode + '\n'
 
-  // 响应内容
-  logText += 'response body: ' + '\n' + JSON.stringify(res.body) + '\n'
-
   // 响应日志结束
   logText += '*************** response log end ***************' + '\n'
 
@@ -72,24 +72,14 @@ const formatRes = function (res, resTime) {
 }
 
 // 格式化错误日志
-const formatError = function (ctx, err, resTime) {
+const formatError = function (req, err, resTime) {
   let logText
 
   // 错误信息开始
   logText += '\n' + '*************** error log start ***************' + '\n'
 
   // 添加请求日志
-  logText += formatReqLog(ctx, resTime)
-
-  // 错误名称
-
-  logText += 'err name: ' + err.name + '\n'
-  // 错误信息
-
-  logText += 'err message: ' + err.message + '\n'
-  // 错误详情
-
-  logText += 'err stack: ' + err.stack + '\n'
+  logText += formatReqLog(req, resTime)
 
   // 错误信息结束
   logText += '*************** error log end ***************' + '\n'

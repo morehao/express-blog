@@ -7,6 +7,11 @@ errorCode规则：当errorCode为0时表示接口访问成功并且无抛错；�
 */
 module.exports = {
   // 系统级别错误
+  NOT_FIND_ROUTE: {
+    status: 200,
+    errorCode: 10000,
+    errorMsg: '访问的路由不存在'
+  },
   SERVER_ERROR: {
     status: 200,
     errorCode: 10001,
