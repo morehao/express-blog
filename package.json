@@ -4,9 +4,9 @@
   "description": "express-blog",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --inspect server.js",
+    "dev": "cross-env NODE_ENV=development && nodemon --inspect server.js",
+    "start": "cross-env NODE_ENV=production && node server.js",
     "build": "node ./build/server.js",
-    "start": "node server.js",
     "test": "mocha test/**/*.js",
     "standard": "standard",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
@@ -24,7 +24,9 @@
   },
   "devDependencies": {
     "bluebird": "^3.5.1",
+    "config": "^2.0.1",
     "cors": "^2.8.4",
+    "cross-env": "^5.2.0",
     "eslint": "^4.19.1",
     "formidable": "^1.2.1",
     "mocha": "^5.2.0",

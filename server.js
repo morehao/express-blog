@@ -34,7 +34,6 @@ app.use(cors())
 
 // 注册路由
 routes(app)
-
 app.listen(settings.port)
 console.log('express-blog server started on: ' + settings.port)
 
