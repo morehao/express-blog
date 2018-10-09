@@ -52,6 +52,7 @@
  * @apiDescription 用户详情的接口
  * @apiName view a user
  * @apiGroup User
+ * @apiUse headerParams
  * @apiParam {String} _id 用户的id
  * @apiUse userResponse
  * @apiUse userNotFind
@@ -65,20 +66,7 @@
  * @apiUse headerParams
  * @apiUse listParams
  * @apiUse userParamsOptional
- * @apiSuccessExample Success-Response:
- * {
- *   errorCode: 0,
- *   status: 200,
- *   data: [
- *    {
- *      _id: '123',
- *      name: 'morehao',
- *      createdAt: '20180913',
- *      updatedAt: '20180913',
- *      lastLogin: '暂未登录'
- *    }
- *  ]
- * }
+ * @apiUse userListResponse
  * @apiUse userNotFind
 */
 
@@ -90,19 +78,27 @@
  * @apiParam {String} name 用户名
  * @apiParam {String} password 密码
  * @apiSuccessExample Success-Response:
- * {
- *   errorCode: 0,
- *   status: 200,
- *   data: [
- *    {
- *      _id: '123',
- *      name: 'morehao',
- *      createdAt: '20180913',
- *      updatedAt: '20180913',
- *      lastLogin: '暂未登录',
- *      token: '123asd123qsdwf1'
- *    }
- *  ]
- * }
+  {
+    "status": 200,
+    "errorCode": 0,
+    "data": {
+        "_id": "5bbc59366501713374220caa",
+        "intruction": "这个人很懒，什么都有没留下、、、",
+        "logo": "/upload/images/defaultlogo.png",
+        "role": "ordinary users",
+        "name": "morehao",
+        "nickName": "毛浩先生",
+        "age": 24,
+        "sex": "male",
+        "company": "太原科技大学",
+        "website": "morehao.com",
+        "createdAt": "2018-10-09 15:31:02",
+        "updatedAt": "2018-10-09 15:31:02",
+        "__v": 0,
+        "reSex": "男",
+        "lastLogin": "暂无登录记录",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YmJjNTkzNjY1MDE3MTMzNzQyMjBjYWEiLCJpYXQiOjE1MzkwNzAzNjksImV4cCI6MTUzOTE1Njc2OX0.NkluX_5Z7NhcE_azAa16Jtqh3YBnbzXO2MecYKD0exs"
+    }
+  }
  * @apiUse userNotFind
 */

@@ -26,17 +26,59 @@
 /**
  * @apiDefine userResponse
  * @apiSuccessExample Success-Response:
- * {
- *   errorCode: 0,
- *   status: 200,
- *   data: {
- *     _id: '123',
- *     name: 'morehao',
- *     createdAt: '20180913',
- *     updatedAt: '20180913',
- *     lastLogin: '暂未登录'
- *   }
- * }
+{
+    "status": 200,
+    "errorCode": 0,
+    "data": {
+        "intruction": "这个人很懒，什么都有没留下、、、",
+        "logo": "/upload/images/defaultlogo.png",
+        "role": "ordinary users",
+        "_id": "5bbc59366501713374220caa",
+        "name": "morehao",
+        "nickName": "毛浩先生",
+        "age": 24,
+        "sex": "male",
+        "company": "太原科技大学",
+        "website": "morehao.com",
+        "createdAt": "2018-10-09 15:31:02",
+        "updatedAt": "2018-10-09 15:31:02",
+        "__v": 0,
+        "lastLogin": "2018-10-09 15:31:02",
+        "id": "5bbc59366501713374220caa",
+        "reSex": "男"
+    }
+}
+*/
+
+/**
+ * @apiDefine userListResponse
+ * @apiSuccessExample Success-Response:
+  {
+    "status": 200,
+    "errorCode": 0,
+    "data": {
+        "dataCount": 1,
+        "list": [
+            {
+                "_id": "5bbc59366501713374220caa",
+                "intruction": "这个人很懒，什么都有没留下、、、",
+                "logo": "/upload/images/defaultlogo.png",
+                "role": "ordinary users",
+                "name": "morehao",
+                "nickName": "毛浩先生",
+                "age": 24,
+                "sex": "male",
+                "company": "太原科技大学",
+                "website": "morehao.com",
+                "createdAt": "2018-10-09 15:31:02",
+                "updatedAt": "2018-10-09 15:31:02",
+                "__v": 0,
+                "reSex": "男",
+                "lastLogin": "暂无登录记录"
+            }
+        ]
+    }
+  }
 */
 /**
  * @apiDefine userNotFind

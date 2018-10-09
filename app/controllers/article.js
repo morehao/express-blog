@@ -76,6 +76,15 @@ class ArticleController {
       res.sendErr(error)
     }
   }
+  async detail (req, res) {
+    try {
+      const result = await Services.article.getArticleById(req.params._id)
+      res.sendOk(result)
+    } catch (error) {
+      const errorRes = resHandler.getErrorRes(error)
+      res.sendErr(errorRes)
+    }
+  }
   async list (req, res) {
     try {
       // 翻页参数处理

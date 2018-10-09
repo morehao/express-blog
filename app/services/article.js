@@ -2,6 +2,7 @@
 const qiniu = require('qiniu')
 const fs = require('fs')
 const BaseService = require('./base')
+const mdb = require('../models')
 const {resHandler} = require('../myutil')
 const {settings} = require('../../config')
 
@@ -49,7 +50,19 @@ class ArticleService extends BaseService {
       throw error
     }
   }
-
+  async getArticleById (id) {
+    try {
+      const result = await mdb.Article.findById(id)
+        .populate([{path: 'authorId', select: '-password'}, {path: 'categoryId'}])
+      if (!result) {
+        const errorMsg = 'ARTICLE_NOT_EXITS'
+        throw errorMsg
+      }
+      return result
+    } catch (error) {
+      throw error
+    }
+  }
   async qiniuUpload (localFile, key) {
     try {
       const {accessKey, secretKey, bucket} = settings.qiniuConfig

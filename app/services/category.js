@@ -42,6 +42,20 @@ class CategoryService extends BaseService {
     }
   }
 
+  async getCategoryById (id) {
+    try {
+      const result = await mdb.ArticleCategory.findById(id)
+        .populate([{path: 'userId', select: '-password'}])
+      if (!result) {
+        const errorMsg = 'CATEGORY_NOT_EXITS'
+        throw errorMsg
+      }
+      return result
+    } catch (error) {
+      throw error
+    }
+  }
+
   async getCategoryList (params) {
     try {
       const result = await super.list(params)

@@ -100,6 +100,11 @@ module.exports = {
     errorCode: 20301,
     errorMsg: '该分类已经存在'
   },
+  CATEGORY_NOT_EXITS: {
+    status: 200,
+    errorCode: 20302,
+    errorMsg: '该分类不存在'
+  },
   CATEGORYNAME_IS_EMPTY: {
     status: 200,
     errorCode: 20303,

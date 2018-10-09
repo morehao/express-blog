@@ -6,20 +6,7 @@
   * @apiDescription 新增文章的接口
   * @apiUse headerParams
   * @apiUse articleParams
-  * @apiSuccessExample Success-Response:
-  * {
-  *   errorCode: 0,
-  *   status: 200,
-  *   data: {
-  *     _id: '00001',
-  *     title: "标题",
-  *     content: '内容',
-  *     authorId: '12313',
-  *     categoryId: '1231231',
-  *     createdAt: '20180913',
-  *     updatedAt: '20180913'
-  *   }
-  * }
+  * @apiUse articleCreareResponse
   * @apiErrorExample {json} Error-Response:
   *  {
   *    status: 200,
@@ -36,7 +23,12 @@
  * @apiUse headerParams
  * @apiParam {String} _id 文章的id
  * @apiUse articleParamsOptional
- * @apiUse articleResponse
+ * @apiSuccessExample Success-Response:
+  {
+    "status": 200,
+    "errorCode": 0,
+    "data": "文章修改成功！"
+  }
  * @apiUse articleNotFind
 */
 
@@ -59,6 +51,6 @@
  * @apiUse headerParams
  * @apiUse listParams
  * @apiUse articleParamsOptional
- * @apiUse articleResponse
+ * @apiUse articleListResponse
  * @apiUse articleNotFind
 */

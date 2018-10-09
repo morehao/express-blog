@@ -30,6 +30,16 @@ class CategoryController {
     }
   }
 
+  async detail (req, res) {
+    try {
+      const result = await Services.category.getCategoryById(req.params._id)
+      res.sendOk(result)
+    } catch (error) {
+      const errorRes = resHandler.getErrorRes(error)
+      res.sendErr(errorRes)
+    }
+  }
+
   async list (req, res) {
     try {
       // 翻页参数处理
