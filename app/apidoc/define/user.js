@@ -24,7 +24,7 @@
 */
 
 /**
- * @apiDefine userRespones
+ * @apiDefine userResponse
  * @apiSuccessExample Success-Response:
  * {
  *   errorCode: 0,

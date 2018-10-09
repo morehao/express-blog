@@ -5,7 +5,7 @@
  * @apiName create a user
  * @apiGroup User
  * @apiUse userParams
- * @apiUse userRespones
+ * @apiUse userResponse
  * @apiErrorExample {json} Error-Response:
  *  {
  *    status: 200,
@@ -53,7 +53,7 @@
  * @apiName view a user
  * @apiGroup User
  * @apiParam {String} _id 用户的id
- * @apiUse userRespones
+ * @apiUse userResponse
  * @apiUse userNotFind
 */
 
