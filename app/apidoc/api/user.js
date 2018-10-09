@@ -27,7 +27,7 @@
 /**
  * @api {DELETE} /user/:_id delete a user
  * @apiDescription 用户删除的接口
- * @apiName 删除用户
+ * @apiName 删除某个用户
  * @apiGroup User
  * @apiParam {String} _id 用户的id
  * @apiSuccessExample Success-Response:
