@@ -1,10 +1,10 @@
 'use strict'
 /**
-  * @api {POST} /article create an article
-  * @apiName 新增文章
+  * @api {POST} /article 新增文章
+  * @apiName create an article
   * @apiGroup Article
   * @apiDescription 新增文章的接口
-  * @apiHeader {String} token 用户登录后返回的token令牌
+  * @apiUse headerParams
   * @apiUse articleParams
   * @apiSuccessExample Success-Response:
   * {

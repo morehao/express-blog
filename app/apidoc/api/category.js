@@ -1,10 +1,10 @@
 'use strict'
 /**
-  * @api {POST} /category create a category
-  * @apiName 新增文章类别
+  * @api {POST} /category 新增文章类别
+  * @apiName create a category
   * @apiGroup Category
   * @apiDescription 新增文章类别的接口
-  * @apiHeader {String} token 用户登录后返回的token令牌
+  * @apiUse headerParams
   * @apiUse categoryParams
   * @apiSuccessExample Success-Response:
   * {
