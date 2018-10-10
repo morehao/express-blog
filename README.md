@@ -14,6 +14,26 @@
 12、使用mocha框架编写测试代码<br>
 13、设置跨域访问<br>
 14、优化日志，格式化日志信息，但仍需修改<br>
+15、 后来添加的东西忘记记录了。。。。。<br>
 参考资料：<br>
 [restful api](https://www.codementor.io/olatundegaruba/nodejs-restful-apis-in-10-minutes-q0sgsfhbd)<br>
 [log4js](https://juejin.im/post/5b7d0e20f265da43231f00d4)
+
+命令说明：
+``` shell
+# 安装依赖
+npm install
+# 开发模式启动程序
+npm run dev
+# 生产模式启动程序
+npm run start
+# 生成接口文档
+npm run apidoc
+# 生成提交日志
+npm run changelog
+# 运行测试代码
+npm run test
+# 初始化构建，生成admin账号
+npm run build
+```
+注：执行`npm run apidoc`后启动程序，开发环境下访问`localhost:4000/apidoc`即可查看接口文档。
