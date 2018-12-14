@@ -30,7 +30,7 @@
     }
   },
   "categories": {
-    "default": { "appenders": [ "app", "errors" ], "level": "DEBUG" },
-    "http": { "appenders": ["access", "request"], "level": "DEBUG" }
+    "default": { "appenders": [ "request", "errors" ], "level": "info" },
+    "http": { "appenders": ["access", "request"], "level": "info" }
   }
 }
