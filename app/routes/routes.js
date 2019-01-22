@@ -36,5 +36,7 @@ module.exports = function (app) {
   app.route('/test')
     .post(Controllers.test.testResponse)
 
-  app.use(middleware.notFind)
+  // app.post(Controllers.test.test)
+
+  app.use('/test1', Controllers.test.test)
 }

@@ -1,5 +1,6 @@
 'use strict'
-class TestController {
+const BaseController = require('./base')
+class TestController extends BaseController {
   async testResponse (req, res) {
     try {
       console.log('controller')
