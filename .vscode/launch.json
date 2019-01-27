@@ -6,10 +6,10 @@
   "configurations": [
     {
       "type": "node",
-      "request": "launch",
-      "name": "启动程序",
+      "request": "attach",
+      "name": "Attach",
       "runtimeExecutable": "nodemon",
-      "program": "${workspaceFolder}\\server.js",
+      "port": 9229,
       "restart": true,
       "skipFiles": [
         "${workspaceFolder}/node_modules/**/*.js"
