@@ -1,7 +1,7 @@
 {
   "appenders":  {
     "request": {
-      "type": "console",
+      "type": "DateFile",
       "filename": "./logs/access",
       "pattern": "-yyyy-MM-dd.log",
       "alwaysIncludePattern": true,
@@ -13,14 +13,20 @@
       "pattern": "-yyyy-MM-dd.log",
       "alwaysIncludePattern": true
     },
-    "err": {
-      "type": "stderr",
+    "errorFile": {
+      "type": "DateFile",
       "filename": "./logs/errors",
       "pattern": "-yyyy-MM-dd.log",
       "alwaysIncludePattern": true
+    },
+    "errors": {
+      "type": "logLevelFilter",
+      "level": "ERROR",
+      "appender": "errorFile"
     }
   },
   "categories": {
-    "default": { "appenders": ["application", "request"], "level": "info" }
+    "default": { "appenders": ["application", "request"], "level": "info" },
+    "error": { "appenders": ["errors"], "level": "error" }
   }
 }

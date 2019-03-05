@@ -42,7 +42,8 @@
   "standard": {
     "globals": [
       "describe",
-      "it"
+      "it",
+      "logger"
     ]
   },
   "dependencies": {

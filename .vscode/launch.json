@@ -7,7 +7,12 @@
     {
       "type": "node",
       "request": "attach",
+<<<<<<< HEAD
       "name": "Attach to node",
+=======
+      "name": "Attach",
+      "runtimeExecutable": "nodemon",
+>>>>>>> master
       "port": 9229,
       "restart": true,
       "skipFiles": [
