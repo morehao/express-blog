@@ -5,10 +5,10 @@ const ObjectId = Schema.ObjectId
 const ArticleSchema = new Schema({
   title: { type: String },
   content: { type: String },
-  authorId: { type: ObjectId, ref: 'Users' },
-  top: { type: Boolean, default: false }, // 置顶文章
+  authorId: { type: ObjectId, ref: 'Users', index: true },
+  top: { type: Boolean, default: false, index: true }, // 置顶文章
   good: { type: Boolean, default: false }, // 精华文章
-  createAt: { type: Date, default: Date.now },
+  createAt: { type: Date, default: Date.now, index: true },
   updateAt: { type: Date, default: Date.now },
   countInfo: {
     commentCount: {type: Number, default: 0},
@@ -20,9 +20,5 @@ const ArticleSchema = new Schema({
   categoryId: { type: ObjectId, ref: 'Categorys' },
   deleted: { type: Boolean, default: false }
 })
-
-ArticleSchema.index({ create_at: -1 })
-ArticleSchema.index({ top: -1, last_reply_at: -1 })
-ArticleSchema.index({ author_id: 1, create_at: -1 })
 
 module.exports = mongoose.model('Articles', ArticleSchema)

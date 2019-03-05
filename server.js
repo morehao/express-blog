@@ -24,8 +24,10 @@ app.use(express.static(path.join(__dirname, 'app/public')))
 app.use('/apidoc', express.static(path.join(__dirname, 'app/public/apidoc/')))
 
 // 连接数据库
-mongoose.Promise = global.Promise // 将mongoose自身的promise替代为ES6的promise
-mongoose.connect(settings.dbConfig.URL, { useNewUrlParser: true }) // MongoDB升级到4.0之后，需要加useNewUrlParser参数
+// 将mongoose自身的promise替代为ES6的promise
+mongoose.Promise = global.Promise
+// MongoDB升级到4.0之后，需要加useNewUrlParser参数和useCreateIndex参数
+mongoose.connect(settings.dbConfig.URL, { useNewUrlParser: true, useCreateIndex: true })
 
 // 请求体解析中间件
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -40,6 +42,6 @@ app.use(cors())
 // 注册路由
 routes(app)
 app.listen(settings.port)
-logger.info(`port is ${settings.port}`)
+logger.info(`start:port is ${settings.port}`)
 
 module.exports = app

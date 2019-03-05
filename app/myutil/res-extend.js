@@ -1,8 +1,5 @@
 'use strict'
 const lodash = require('lodash')
-// const log4js = require('log4js')
-// log4js.configure = require('../../config/log4js.json')
-// const logger = log4js.getLogger('cheese')
 
 module.exports = (req, res, next) => {
   const extendAttr = {
