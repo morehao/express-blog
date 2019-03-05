@@ -22,11 +22,11 @@ module.exports = (req, res, next) => {
       return res.send(lodash.extend(rst))
     },
     sendErr: (errorInfo) => {
-      // logger.error(`req-url:${req.url}-method-${req.method}`)
-      // logger.error(`req-query:${JSON.stringify(req.query)}`)
-      // logger.error(`req-params:${JSON.stringify(req.params)}`)
-      // logger.error(`req-body:${JSON.stringify(req.body)}`)
-      // logger.error(`sendErr:${JSON.stringify(errorInfo)}`)
+      logger.error(`req-url:${req.url}-method-${req.method}`)
+      logger.error(`req-query:${JSON.stringify(req.query)}`)
+      logger.error(`req-params:${JSON.stringify(req.params)}`)
+      logger.error(`req-body:${JSON.stringify(req.body)}`)
+      logger.error(`sendErr:${JSON.stringify(errorInfo)}`)
       return res.send(lodash.extend(errorInfo))
     }
   }
