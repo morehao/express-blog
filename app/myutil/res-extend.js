@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
         errorCode: 0,
         data: data
       }
-      logger.info(`req-url:${req.url}-method-${req.method}`)
+      logger.info(`method: [${req.method}] req-url: ${req.url}`)
       logger.info(`req-query:${JSON.stringify(req.query)}`)
       logger.info(`req-params:${JSON.stringify(req.params)}`)
       if (req.url !== '/user/login') {
@@ -19,7 +19,7 @@ module.exports = (req, res, next) => {
       return res.send(lodash.extend(rst))
     },
     sendErr: (errorInfo) => {
-      logger.error(`req-url:${req.url}-method-${req.method}`)
+      logger.error(`method: [${req.method}] req-url: ${req.url}`)
       logger.error(`req-query:${JSON.stringify(req.query)}`)
       logger.error(`req-params:${JSON.stringify(req.params)}`)
       logger.error(`req-body:${JSON.stringify(req.body)}`)

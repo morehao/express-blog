@@ -1,36 +1,26 @@
 {
   "appenders":  {
-    "access": {
-      "type": "DateFile",
+    "request": {
+      "type": "console",
       "filename": "./logs/access",
       "pattern": "-yyyy-MM-dd.log",
       "alwaysIncludePattern": true,
       "category": "http"
     },
-    "request": {
-      "type": "console",
-      "category": "http"
-    },
-    "app": {
-      "type": "file",
-      "filename": "./logs/app.log",
-      "maxLogSize": 10485760,
-      "numBackups": 3
-    },
-    "errorFile": {
+    "application": {
       "type": "DateFile",
-      "filename": "./logs/errors",
+      "filename": "./logs/application",
       "pattern": "-yyyy-MM-dd.log",
       "alwaysIncludePattern": true
     },
-    "errors": {
-      "type": "logLevelFilter",
-      "level": "ERROR",
-      "appender": "errorFile"
+    "err": {
+      "type": "stderr",
+      "filename": "./logs/errors",
+      "pattern": "-yyyy-MM-dd.log",
+      "alwaysIncludePattern": true
     }
   },
   "categories": {
-    "default": { "appenders": ["app"], "level": "info" },
-    "http": { "appenders": ["app", "access", "request"], "level": "info" }
+    "default": { "appenders": ["application", "request"], "level": "info" }
   }
 }

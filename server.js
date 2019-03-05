@@ -7,9 +7,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const log4js = require('log4js')
 
-const {settings} = require('./config')
-const logConfig = require('./config/log4js.json')
-
+const {logConfig, settings} = require('./config')
 const myutil = require('./app/myutil')
 
 const routes = require('./app/routes/routes') // 引入路由

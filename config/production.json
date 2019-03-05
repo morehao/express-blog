@@ -1,5 +1,6 @@
 {
   "Customer": {
-    "settings": "settings.pro"
+    "settings": "settings.pro",
+    "log4js": "log4js.pro"
   }
 }
