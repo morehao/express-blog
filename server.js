@@ -5,24 +5,19 @@ const app = express()
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const cors = require('cors')
-// const log4js = require('log4js')
+const log4js = require('log4js')
 
 const {settings} = require('./config')
+const logConfig = require('./config/log4js.json')
+
 const myutil = require('./app/myutil')
 
 const routes = require('./app/routes/routes') // 引入路由
-
 // 日志配置
-// log4js.configure('./config/log4js.json')
+log4js.configure(logConfig)
+let logger = log4js.getLogger()
+global.logger = logger
 
-// const logger = log4js.getLogger('expressBlog')
-// const logConfig = log4js.connectLogger(logger, require('./config/log4js.json'))
-// app.use(logConfig)
-// app.use(log4js.connectLogger(logger, {
-//   level: 'auto',
-//   // include the Express request ID in the logs
-//   format: (req, res, format) => format(`:remote-addr - ${req.id} - [time]${new Date()} [method]":method" - [url]":url" - [status]:status - [content-length]:content-length - [request-body]${JSON.stringify(req.body)}`)
-// }))
 // 配置静态文件
 app.use(express.static(path.join(__dirname, 'app/public')))
 // 配置apidoc
@@ -45,7 +40,6 @@ app.use(cors())
 // 注册路由
 routes(app)
 app.listen(settings.port)
-// console.log('express-blog server started on: ' + settings.port)
-// logger.info(`port is ${settings.port}`)
+logger.info(`port is ${settings.port}`)
 
 module.exports = app
