@@ -16,6 +16,7 @@ module.exports = {
     USERNAME: 'morehao',
     PASSWORD: 'morehao'
   },
+  mongooseDebug: true,
   adminConfig: {
     name: 'admin',
     password: '123456',

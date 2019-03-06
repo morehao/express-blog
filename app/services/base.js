@@ -53,7 +53,7 @@ class BaseService {
       // if (params.populate) {
       //   query.populate = params.populate
       // }
-      const dataCount = await mdb[this.model].count()
+      const dataCount = await mdb[this.model].countDocuments()
       const list = await query
       return {
         dataCount: dataCount,

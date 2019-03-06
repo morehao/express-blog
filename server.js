@@ -26,6 +26,7 @@ app.use('/apidoc', express.static(path.join(__dirname, 'app/public/apidoc/')))
 mongoose.Promise = global.Promise
 // MongoDB升级到4.0之后，需要加useNewUrlParser参数和useCreateIndex参数
 mongoose.connect(settings.dbConfig.URL, { useNewUrlParser: true, useCreateIndex: true })
+mongoose.set('debug', settings.mongooseDebug)
 
 // 请求体解析中间件
 app.use(bodyParser.urlencoded({ extended: true }))
