@@ -10,7 +10,7 @@ const log4js = require('log4js')
 const {logConfig, settings} = require('./config')
 // const myutil = require('./app/myutil')
 
-const routes = require('./app/routes/routes') // 引入路由
+const routes = require('./app/routes') // 引入路由
 // 日志配置
 log4js.configure(logConfig)
 let logger = log4js.getLogger()
