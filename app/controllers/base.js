@@ -1,14 +1,14 @@
 'use strict'
-const Services = require('../services')
+const mdb = require('../models')
 
 class BaseController {
-  // constructor (req, res) {
-  //   this.req = req
-  //   this.res = res
-  // }
-  async test (req, res) {
-    const result = await Services.users.test(req.body.name)
-    res.sendOk(result)
+  constructor (modelName) {
+    this.modelName = modelName
+  }
+  async test () {
+    const result = await mdb[this.modelName].find()
+    return result
+    // return 'aaa'
   }
 }
 module.exports = BaseController
