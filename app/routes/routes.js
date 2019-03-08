@@ -4,7 +4,7 @@
 
 const Controllers = require('../controllers')
 const middleware = require('../middlewares')
-const middlewaresArr = [middleware.verifyToken]
+const middlewaresArr = [middleware.verifyToken, middleware.log]
 
 module.exports = function (app) {
   app.post('/users/test', Controllers.users.test)

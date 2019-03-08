@@ -9,6 +9,7 @@ module.exports = (req, res, next) => {
         errorCode: 0,
         data: data
       }
+      logger.info(`traceId:${req.headers.traceId}`)
       logger.info(`method: [${req.method}] req-url: ${req.url}`)
       logger.info(`req-query:${JSON.stringify(req.query)}`)
       logger.info(`req-params:${JSON.stringify(req.params)}`)
@@ -19,6 +20,7 @@ module.exports = (req, res, next) => {
       return res.send(lodash.extend(rst))
     },
     sendErr: (errorInfo) => {
+      logger.info(`traceId:${req.headers.traceId}`)
       logger.error(`method: [${req.method}] req-url: ${req.url}`)
       logger.error(`req-query:${JSON.stringify(req.query)}`)
       logger.error(`req-params:${JSON.stringify(req.params)}`)
