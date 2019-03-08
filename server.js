@@ -8,7 +8,7 @@ const cors = require('cors')
 const log4js = require('log4js')
 
 const {logConfig, settings} = require('./config')
-const myutil = require('./app/myutil')
+// const myutil = require('./app/myutil')
 
 const routes = require('./app/routes/routes') // 引入路由
 // 日志配置
@@ -32,8 +32,8 @@ mongoose.set('debug', settings.mongooseDebug)
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
-// 对res的扩展
-app.use(myutil.resExtend)
+// // 对res的扩展
+// app.use(myutil.resExtend)
 
 // 跨域配置
 app.use(cors())
