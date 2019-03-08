@@ -5,7 +5,7 @@ class TestController extends BaseController {
   constructor (modelName) {
     super(modelName)
     this.modelName = 'User'
-    console.log('modelName:', this.modelName)
+    this.testResponse = this.testResponse.bind(this)
   }
 
   async testResponse (req, res) {
@@ -13,7 +13,6 @@ class TestController extends BaseController {
       const result = await super.test()
       res.send({data: result})
     } catch (error) {
-      console.log('error:', error)
       res.sendErr(error)
     }
   }
