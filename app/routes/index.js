@@ -2,7 +2,7 @@
 
 const Controllers = require('../controllers')
 const middleware = require('../middlewares')
-const middlewaresArr = [middleware.verifyToken, middleware.log]
+const middlewaresArr = [middleware.verifyToken, middleware.paramValidate, middleware.log]
 
 module.exports = (app) => {
   app.use(middleware.resExtend)
@@ -21,4 +21,5 @@ module.exports = (app) => {
   // app.post(Controllers.test.test)
 
   app.use('/test1', Controllers.test.test)
+  app.post('/testrule', Controllers.test.testRule)
 }

@@ -16,5 +16,14 @@ class TestController extends BaseController {
       res.sendErr(error)
     }
   }
+
+  async testRule (req, res) {
+    try {
+      console.log(typeof req.body.name)
+      res.send('success')
+    } catch (error) {
+      res.sendErr(error)
+    }
+  }
 }
 module.exports = new TestController()
